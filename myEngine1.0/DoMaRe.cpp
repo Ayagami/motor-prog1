@@ -23,16 +23,30 @@ DoMaRe * DoMaRe::CrearVentana( HINSTANCE hInst ,int nCmdShow, wstring _t, int _w
     }
 
     DoMaRe * pDoMaRe = new DoMaRe;
-	HWND hWnd = CreateWindow( m_pszClassName, (char * )_t.c_str(), WS_VISIBLE | WS_OVERLAPPEDWINDOW, 50, 50, _w, _h, NULL, NULL, hInst, pDoMaRe );
+	/* (char * )_t.c_str() */
+	HWND hWnd = CreateWindow( m_pszClassName, (char * )_t.c_str(), WS_VISIBLE | WS_OVERLAPPEDWINDOW, 50, 50, _w + 8, _h + 30, NULL, NULL, hInst, pDoMaRe );
     if ( hWnd == NULL ) {
         delete pDoMaRe;
         MessageBox(NULL,"Problem creating the window.","Error",0); 
         return 0; 
     }
 
-	ShowWindow(hWnd,
-        nCmdShow);
+	ShowWindow(hWnd,nCmdShow);
     UpdateWindow(hWnd);
+
+	//
+	BOOL bRet;
+    MSG msg;
+    while( (bRet = GetMessage( &msg, 0, 0, 0 )) != 0){ 
+        if (bRet == -1){
+            // handle the error and possibly exit
+        }
+        else{
+            TranslateMessage(&msg); 
+            DispatchMessage(&msg); 
+        }
+    }
+
 
     return pDoMaRe;
 

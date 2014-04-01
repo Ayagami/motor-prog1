@@ -1,10 +1,9 @@
-#ifndef  PRINTER_H
-#define PRINTER_H
+#pragma once
+
 #include <iostream>
 #include "myEngine_API.h"
 #include <Windows.h>
 using namespace std;
-
 
 class MYENGINE_API DoMaRe{
 public:
@@ -17,4 +16,3 @@ private:
     static const char * m_pszClassName;
     HWND m_hWnd;
 };
-#endif

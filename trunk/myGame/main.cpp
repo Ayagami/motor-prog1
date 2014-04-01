@@ -8,5 +8,4 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdL
     if ( pviewvars == 0 ) return 0;
     delete pviewvars;
     return 0;
-
 }

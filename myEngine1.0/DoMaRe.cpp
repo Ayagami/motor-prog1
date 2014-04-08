@@ -1,21 +1,23 @@
 #include "DoMaRe.h"
 #include <string>
-const char * DoMaRe::m_pszClassName = "DoMaRe";
-
+using namespace dmr;
+const char * dmr::DoMaRe::m_pszClassName = "DoMaRe";
 DoMaRe * DoMaRe::CrearVentana( HINSTANCE hInst ,int nCmdShow, wstring _t, int _w, int _h) {
 
-    WNDCLASS wincl;
+	WNDCLASS wincl = {0};
     if (!GetClassInfo(hInst, m_pszClassName, &wincl)) {
-        wincl.style = CS_HREDRAW | CS_VREDRAW;
+        
         wincl.hInstance = hInst;
         wincl.lpszClassName = m_pszClassName;
-        wincl.lpfnWndProc = WindowProc;
-        wincl.cbClsExtra = 0;
-        wincl.cbWndExtra = 0;
-        wincl.hIcon = NULL;
-        wincl.hCursor = NULL;
+        wincl.lpfnWndProc = WindowProc; /*
+		wincl.cbClsExtra = 0;
+		wincl.cbWndExtra = 0;
+		wincl.hIcon = NULL;
+		wincl.hCursor = NULL;
+		wincl.lpszMenuName = NULL;
+		wincl.style = CS_HREDRAW | CS_VREDRAW; */
         wincl.hbrBackground = (HBRUSH)(COLOR_BTNFACE+1);
-        wincl.lpszMenuName = NULL;
+      
         if (RegisterClass(&wincl) == 0) {
             MessageBox(NULL,"The window class failed to register.","Error",0);
             return 0;
@@ -24,7 +26,7 @@ DoMaRe * DoMaRe::CrearVentana( HINSTANCE hInst ,int nCmdShow, wstring _t, int _w
 
     DoMaRe * pDoMaRe = new DoMaRe;
 	/* (char * )_t.c_str() */
-	HWND hWnd = CreateWindow( m_pszClassName, (char * )_t.c_str(), WS_VISIBLE | WS_OVERLAPPEDWINDOW, 50, 50, _w + 8, _h + 30, NULL, NULL, hInst, pDoMaRe );
+	HWND hWnd = CreateWindow( m_pszClassName,(char * )_t.c_str(), WS_VISIBLE | WS_OVERLAPPEDWINDOW, 50, 50, _w + 8, _h + 30, NULL, NULL, hInst, pDoMaRe );
     if ( hWnd == NULL ) {
         delete pDoMaRe;
         MessageBox(NULL,"Problem creating the window.","Error",0); 

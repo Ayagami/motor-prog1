@@ -4,7 +4,7 @@
 #include "myEngine_API.h"
 #include <Windows.h>
 using namespace std;
-
+namespace dmr{
 class MYENGINE_API DoMaRe{
 public:
     static DoMaRe* CrearVentana( HINSTANCE hInstance ,int nCmdShow, wstring _t, int _w, int _h);
@@ -16,3 +16,4 @@ private:
     static const char * m_pszClassName;
     HWND m_hWnd;
 };
+}

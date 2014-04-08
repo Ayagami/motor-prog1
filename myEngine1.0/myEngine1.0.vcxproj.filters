@@ -24,12 +24,18 @@
     <ClInclude Include="myEngine_API.h">
       <Filter>Archivos de encabezado\include</Filter>
     </ClInclude>
-    <ClInclude Include="DoMaRe.h">
+    <ClInclude Include="Renderer.h">
+      <Filter>Archivos de encabezado\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
       <Filter>Archivos de encabezado\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DoMaRe.cpp">
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Archivos de código fuente\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
       <Filter>Archivos de código fuente\src</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,0 +1,22 @@
+eng(parametros ventana)
+
+eng.init()
+
+eng.run()
+
+
+
+Eng.h -> Contiene Atributos y Window* / Renderer*
+
+
+Renderer.h -> Const / Dest y Init(HWND).
+	   -> beginFrame() y EndFrame().
+
+
+	// if(PeekMessage(&Msg,NULL,0,0,PM_REMOVE))
+		{
+		 	switch(kMsg.message){
+			case WM_QUIT:{ bool = true; break; }
+			}
+		}
+Averiguar INIT.

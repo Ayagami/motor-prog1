@@ -62,11 +62,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Engine.h" />
     <ClInclude Include="myEngine_API.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="Renderer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="Renderer.cpp" />
   </ItemGroup>

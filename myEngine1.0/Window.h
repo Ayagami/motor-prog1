@@ -4,16 +4,20 @@
 #include "myEngine_API.h"
 #include <Windows.h>
 using namespace std;
-namespace dmr{
 class MYENGINE_API Window{
-public:
-    static Window* CrearVentana( HINSTANCE hInstance ,int nCmdShow, wstring _t, int _w, int _h);
-    Window() : m_hWnd( 0 ) {}
-    ~Window();
 
+public:
+    bool CrearVentana(wstring _t, int _w, int _h);
+	HWND hWnd(){
+		return m_hWnd;
+	}
+	static LRESULT CALLBACK WindowProc( HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
+    Window(HINSTANCE hInstance, char* cl);
+    ~Window();
+	
 private:
-    static LRESULT CALLBACK WindowProc( HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam );
-    static const char * m_pszClassName;
-    HWND m_hWnd;
+	WNDCLASS * WC;
+	HINSTANCE _hInst;
+	HWND m_hWnd;
+	char* m_pszClassName;
 };
-}

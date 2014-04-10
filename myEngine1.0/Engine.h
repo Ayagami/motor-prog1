@@ -9,13 +9,15 @@ namespace Engn{
 	class MYENGINE_API Engine{
 
 		public:
-			Engine(HINSTANCE hInst ,int nCmdS, wstring t, int w, int h);
+			Engine(HINSTANCE hInst ,int nCmdS, wstring t, int w, int h, char* s);
 			~Engine();
-			void init();
+			bool init();
 			void run();
 			HWND hWnd;
 
 		private:
+			char* clase;
+			HINSTANCE hInstance;
 			Window* WndC;
 			Renderer* Rendr;
 			int nCmdShow;

@@ -1,12 +1,11 @@
+#pragma once
 #include "Engine.h"
 #include <string>
 #include "Window.h"
 #include "Renderer.h"
 
-using namespace Engn;
-
-Engine::Engine(HINSTANCE hInst, int nCmdS, wstring t, int w, int h, char* s):
-hInstance(hInst),nCmdShow(nCmdS), _t(t), _w(w), _h(h), clase(s), hWnd(0), WndC(new Window(hInst, s) ), Rendr(new Renderer){
+Engine::Engine(HINSTANCE hInst, int nCmdS, string t, int w, int h):
+hInstance(hInst),nCmdShow(nCmdS), _t(t), _w(w), _h(h), hWnd(0), WndC(new Window(hInst) ), Rendr(new Renderer){
 	// So... Why so Serious?
 }
 bool Engine::init(){

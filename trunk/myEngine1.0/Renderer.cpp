@@ -8,10 +8,10 @@ d3d_dev(new LPDIRECT3DDEVICE9()){
 }
 
 Renderer::~Renderer(){
-	(*d3d)->Release();
-	delete d3d;
 	(*d3d_dev)->Release();
 	delete d3d_dev;
+	(*d3d)->Release();
+	delete d3d;
 }
 
 bool Renderer::Init(HWND _HwnD){

@@ -3,7 +3,7 @@
 #include "myEngine_API.h"
 #include <Windows.h>
 using namespace std;
-class MYENGINE_API Window{
+class Window{
 
 public:
     bool CrearVentana(string _t, int _w, int _h);

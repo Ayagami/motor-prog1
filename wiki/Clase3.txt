@@ -20,3 +20,20 @@ Renderer.h -> Const / Dest y Init(HWND).
 			}
 		}
 Averiguar INIT.
+
+
+
+
+class Game : public pg1::Game{
+	public: bool init(Renderer&)
+}
+
+Renderer:
+
+public:
+void draw(ColorVertex* vert, Primitive eP, size_t uiVertexCount);
+
+private: VertexBuffer* m_pkColorVB;
+
+
+

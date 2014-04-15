@@ -1,9 +1,11 @@
 #pragma once
 #include "Renderer.h"
+#include <time.h>
 
 Renderer::Renderer():
 d3d(new LPDIRECT3D9()),
-d3d_dev(new LPDIRECT3DDEVICE9()){
+d3d_dev(new LPDIRECT3DDEVICE9())
+{
 	// Again, Nothing to do.
 }
 
@@ -27,7 +29,8 @@ bool Renderer::Init(HWND _HwnD){
 }
 
 void Renderer::BeginFrame(){
-	(*d3d_dev)->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0,0,255), 1.0f, 0);
+	srand(time(NULL));
+	(*d3d_dev)->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(((int) ( 1+rand()%(255-1) ) ),((int) ( 1+rand()%(255-1) )), ((int) ( 1+rand()%(255-1) )) ), 1.0f, 0);
 	(*d3d_dev)->BeginScene();
 }
 

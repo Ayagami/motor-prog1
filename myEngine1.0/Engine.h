@@ -1,25 +1,27 @@
 #pragma once
-#include <iostream>
 #include "myEngine_API.h"
+#include <Windows.h>
+#include <string>
+namespace DoMaRe{
 class Window;
 class Renderer;
-#include <Windows.h>
-using namespace std;
+class Game;
 	class MYENGINE_API Engine{
 
 		public:
-			Engine(HINSTANCE hInst ,int nCmdS, string t, int w, int h);
+			Engine(HINSTANCE hInst ,int nCmdS, std::string t, int w, int h);
 			~Engine();
 			bool init();
 			void run();
 			HWND hWnd;
-
+			Game* G;
 		private:
 			HINSTANCE hInstance;
 			Window* WndC;
 			Renderer* Rendr;
 			int nCmdShow;
-			string _t;
+			std::string _t;
 			int _w;
 			int _h;
 	};
+}

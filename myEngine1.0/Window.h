@@ -2,11 +2,11 @@
 #include <iostream>
 #include "myEngine_API.h"
 #include <Windows.h>
-using namespace std;
+#include <string>
+namespace DoMaRe{
 class Window{
-
 public:
-    bool CrearVentana(string _t, int _w, int _h);
+    bool CrearVentana(std::string _t, int _w, int _h);
 	HWND hWnd(){
 		return m_hWnd;
 	}
@@ -20,3 +20,4 @@ private:
 	HWND m_hWnd;
 	char* m_pszClassName;
 };
+}

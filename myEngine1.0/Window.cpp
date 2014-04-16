@@ -1,11 +1,11 @@
 #pragma once
 #include "Window.h"
 #include <string>
-
+using namespace DoMaRe;
 Window::Window(HINSTANCE hInstance):WC(new WNDCLASS),m_hWnd(NULL),_hInst(hInstance),m_pszClassName("MyEngine"){
 }
 
-bool Window::CrearVentana(string _t, int _w, int _h) {
+bool Window::CrearVentana(std::string _t, int _w, int _h) {
 	
 	ZeroMemory(WC, sizeof(*WC));
 	WC->lpfnWndProc=WindowProc;

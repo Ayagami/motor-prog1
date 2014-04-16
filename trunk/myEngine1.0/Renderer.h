@@ -1,16 +1,21 @@
 #pragma once
 #include <Windows.h>
+#include "VertexBuffer.h"
+#include "myEngine_API.h"
+#include "RenderTypes.h"
 #include <d3d9.h>
-class Renderer{
+namespace DoMaRe{
+class MYENGINE_API Renderer{
 	public:
 		Renderer();
 		~Renderer();
 		bool Init(HWND _HwnD);
 		void BeginFrame();
 		void EndFrame();
-		LPDIRECT3D9 Getd3d();
-		LPDIRECT3DDEVICE9 Getd3ddev();
+		void Draw(const void* v, DoMaRe::Primitive p, size_t vC);
 	private:
-		LPDIRECT3D9 * d3d;
-		LPDIRECT3DDEVICE9 * d3d_dev;
+		IDirect3D9  * d3d;
+		IDirect3DDevice9  * d3d_dev;
+		DoMaRe::VertexBuffer * p_vb;
 };
+}

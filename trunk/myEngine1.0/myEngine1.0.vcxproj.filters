@@ -33,6 +33,15 @@
     <ClInclude Include="Engine.h">
       <Filter>Archivos de encabezado\include</Filter>
     </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Archivos de encabezado\include</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexBuffer.h">
+      <Filter>Archivos de encabezado\include</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderTypes.h">
+      <Filter>Archivos de encabezado\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renderer.cpp">
@@ -42,6 +51,15 @@
       <Filter>Archivos de código fuente\src</Filter>
     </ClCompile>
     <ClCompile Include="Engine.cpp">
+      <Filter>Archivos de código fuente\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Archivos de código fuente\src</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer.cpp">
+      <Filter>Archivos de código fuente\src</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderTypes.cpp">
       <Filter>Archivos de código fuente\src</Filter>
     </ClCompile>
   </ItemGroup>

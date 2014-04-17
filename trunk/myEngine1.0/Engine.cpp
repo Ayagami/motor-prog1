@@ -16,12 +16,12 @@ bool Engine::init(){
 }
 
 void Engine::run(){
-	bool grs = true;
+	//bool grs = true;
 	MSG Mess;
 
 	if(!G) return;
 	if(!G->Init(*Rendr)) return;
-	while(grs){
+	while(G->getGame()){
 		Rendr->BeginFrame();
 		G->Frame(*Rendr);
 		Rendr->EndFrame();
@@ -30,7 +30,7 @@ void Engine::run(){
 			DispatchMessage(&Mess);
 		}
 		if(Mess.message == WM_QUIT)
-			grs = false;
+			G->setGame(false);
 	}
 }
 Engine::~Engine(){

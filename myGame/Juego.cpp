@@ -11,8 +11,8 @@ bool Game::Init(DoMaRe::Renderer& r){
 	v[3].x = SIZE;	v[3].y = -SIZE;	v[3].z = 0.0f;
 
 	v[0].color = DoMaRe_COLOR_RGB(255,0,0);
-	v[1].color = DoMaRe_COLOR_RGB(255,0,0);
-	v[2].color = DoMaRe_COLOR_RGB(255,0,0);
+	v[1].color = DoMaRe_COLOR_RGB(0,255,0);
+	v[2].color = DoMaRe_COLOR_RGB(0,255,0);
 	v[3].color = DoMaRe_COLOR_RGB(255,0,0);
 
 	return true;

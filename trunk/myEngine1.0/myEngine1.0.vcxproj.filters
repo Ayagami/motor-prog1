@@ -42,6 +42,12 @@
     <ClInclude Include="RenderTypes.h">
       <Filter>Archivos de encabezado\include</Filter>
     </ClInclude>
+    <ClInclude Include="Quad.h">
+      <Filter>Archivos de encabezado\include</Filter>
+    </ClInclude>
+    <ClInclude Include="EMath.h">
+      <Filter>Archivos de encabezado\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renderer.cpp">
@@ -60,6 +66,9 @@
       <Filter>Archivos de código fuente\src</Filter>
     </ClCompile>
     <ClCompile Include="RenderTypes.cpp">
+      <Filter>Archivos de código fuente\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Quad.cpp">
       <Filter>Archivos de código fuente\src</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,5 +1,6 @@
 #pragma once
 #include "Renderer.h"
+//#include "Math.h"
 using namespace DoMaRe;
 Renderer::Renderer():
 d3d(NULL),
@@ -37,6 +38,18 @@ bool Renderer::Init(HWND _HwnD){
 	d3dpp.hDeviceWindow = _HwnD;
 	if(d3d->CreateDevice( D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, _HwnD, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dpp, &d3d_dev) == D3D_OK){
 		d3d_dev->SetRenderState(D3DRS_LIGHTING,FALSE);
+		d3d_dev->SetRenderState(D3DRS_CULLMODE,D3DCULL_NONE);
+		
+		D3DVIEWPORT9 kViewport;
+		d3d_dev->GetViewport(&kViewport);
+
+		float fViewPortWidth = static_cast<float>(kViewport.Width);
+		float fViewPortHeight = static_cast<float>(kViewport.Height);
+		
+		D3DXMATRIX projectionMatrix;
+		D3DXMatrixOrthoLH(&projectionMatrix,fViewPortWidth,fViewPortHeight, -1.0f, 1.0f);
+		d3d_dev->SetTransform(D3DTS_PROJECTION, &projectionMatrix);
+
 		p_vb = new DoMaRe::VertexBuffer(d3d_dev, sizeof(DoMaRe::ColorVertex), DoMaRe::ColorVertexType);
 		return true;
 	}
@@ -64,7 +77,17 @@ D3DPRIMITIVETYPE primitiveMap[DoMaRe::PrimitiveCount] = {
         D3DPT_TRIANGLEFAN
 };
 
-void Renderer::Draw(const void* v, DoMaRe::Primitive p, size_t vC){
+D3DTRANSFORMSTATETYPE MatrixTypeMapping[MatrixTypeCount] ={
+ D3DTS_VIEW,
+ D3DTS_PROJECTION,
+ D3DTS_WORLD
+};
+
+void Renderer::setMatrix(MatrixType matrixType, const Matrix& matrix){
+	d3d_dev->SetTransform(MatrixTypeMapping[matrixType], matrix);
+}
+
+void Renderer::Draw(ColorVertex* v, DoMaRe::Primitive p, size_t vC){
 	p_vb->bind();
 	p_vb->draw(v,primitiveMap[p], vC);
 }

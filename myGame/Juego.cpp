@@ -1,11 +1,11 @@
 #include "Juego.h"
-#include "Renderer.h"
+//#include "Renderer.h"
 
 using namespace MiJuego;
 
 bool Game::Init(DoMaRe::Renderer& r){
 	m_kQuad1.setScale(100.0f);
-	m_kQuad2.setPos(100.0f,100.0f);
+	m_kQuad1.setPos(100.0f,100.0f);
 
 	m_kQuad2.setScale(200.0f);
 	m_kQuad2.setPos(-100.0f,-100.0f);

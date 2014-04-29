@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Quad.h"
 #include "RenderTypes.h"
+#include "Renderer.h"
 namespace MiJuego{
 	class Game : public DoMaRe::Game{
 	public:

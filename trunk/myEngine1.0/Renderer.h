@@ -13,8 +13,8 @@ class MYENGINE_API Renderer{
 		bool Init(HWND _HwnD);
 		void BeginFrame();
 		void EndFrame();
-		void setMatrix(MatrixType matrixType, const Matrix& matrix);
-		void Draw(ColorVertex* v, DoMaRe::Primitive p, size_t vC);
+		void setMatrix(MatrixType, const Matrix&);
+		void Draw(ColorVertex*, DoMaRe::Primitive, size_t);
 	private:
 		IDirect3D9  * d3d;
 		IDirect3DDevice9  * d3d_dev;

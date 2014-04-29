@@ -1,6 +1,6 @@
 #include "EMath.h"
 #include "RenderTypes.h"
-
+#include "myEngine_API.h"
 namespace DoMaRe{
 	class Renderer;
 	class MYENGINE_API Quad{
@@ -21,7 +21,6 @@ namespace DoMaRe{
 		float m_fPosX, m_fPosY;
 		float m_fRotation;
 		float m_fScale;
-
 		Matrix m_pkTransformationMatrix;
 		void updateLocalTransformation();
 

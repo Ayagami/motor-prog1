@@ -8,7 +8,7 @@ namespace DoMaRe{
 		DWORD color;
 	};
 
-	extern const int ColorVertexType;
+	extern const DWORD ColorVertexType;
 
 	enum Primitive{
 		TriangleList = 0,

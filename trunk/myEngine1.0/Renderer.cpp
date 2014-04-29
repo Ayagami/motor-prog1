@@ -17,12 +17,12 @@ Renderer::~Renderer(){
 	}
 	if(d3d_dev){
 	d3d_dev->Release();
-	delete d3d_dev;	
+	d3d_dev = NULL;
 	}
 
 	if(d3d){
 	d3d->Release();
-	delete d3d;
+	d3d = NULL;
 	}
 
 	

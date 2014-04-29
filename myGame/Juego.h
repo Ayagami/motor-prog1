@@ -1,5 +1,6 @@
 #pragma once
 #include "Game.h"
+#include "Quad.h"
 #include "RenderTypes.h"
 namespace MiJuego{
 	class Game : public DoMaRe::Game{
@@ -8,6 +9,7 @@ namespace MiJuego{
 		void Frame(DoMaRe::Renderer&);
 		void DeInit();
 	private:
-		DoMaRe::ColorVertex v[4];
+		DoMaRe::Quad m_kQuad1;
+		DoMaRe::Quad m_kQuad2;
 	};
 }

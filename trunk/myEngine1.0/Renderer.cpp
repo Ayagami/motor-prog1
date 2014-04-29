@@ -36,6 +36,7 @@ bool Renderer::Init(HWND _HwnD){
 	d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
 	d3dpp.hDeviceWindow = _HwnD;
 	if(d3d->CreateDevice( D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, _HwnD, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dpp, &d3d_dev) == D3D_OK){
+		d3d_dev->SetRenderState(D3DRS_LIGHTING,FALSE);
 		p_vb = new DoMaRe::VertexBuffer(d3d_dev, sizeof(DoMaRe::ColorVertex), DoMaRe::ColorVertexType);
 		return true;
 	}
@@ -43,7 +44,6 @@ bool Renderer::Init(HWND _HwnD){
 }
 
 void Renderer::BeginFrame(){
-	d3d_dev->SetRenderState(D3DRS_LIGHTING,FALSE);
 	d3d_dev->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0,0,255), 1.0f, 0);
 	d3d_dev->BeginScene();
 }

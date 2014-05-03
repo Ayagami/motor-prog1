@@ -47,7 +47,7 @@ void Quad::setColor(DWORD c){
 }
 
 void Quad::setColor(DWORD c, int v){
-	if(v >= 0 && v < 5)
+	if(v >= 0 && v < 4)
 		_Vertex[v].color = c;
 }
 

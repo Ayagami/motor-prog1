@@ -4,69 +4,81 @@
 using namespace DoMaRe;
 
 Quad::Quad():
-m_fPosX(0.0f),
-m_fPosY(0.0f),
-m_fRotation(0.0f),
-m_fScale(1.0f),
-m_pkTransformationMatrix( new D3DXMATRIX() ),
-m_pakVertices( new ColorVertex[4]){
+_PosX(0.0f),
+_PosY(0.0f),
+_Rot(0.0f),
+_Scale(1.0f),
+_TrMatrix( new D3DXMATRIX() ),
+_Vertex( new ColorVertex[4]){
 
-m_pakVertices[0].x = -0.5f; m_pakVertices[0].y = 0.5f; m_pakVertices[0].z = 0.0f;
-m_pakVertices[1].x = 0.5f; m_pakVertices[1].y = 0.5f; m_pakVertices[1].z = 0.0f;
-m_pakVertices[2].x = -0.5f; m_pakVertices[2].y = -0.5f; m_pakVertices[2].z = 0.0f;
-m_pakVertices[3].x = 0.5f; m_pakVertices[3].y = -0.5f; m_pakVertices[3].z = 0.0f;
+_Vertex[0].x = -0.5f; _Vertex[0].y = 0.5f; _Vertex[0].z = 0.0f;
+_Vertex[1].x = 0.5f; _Vertex[1].y = 0.5f; _Vertex[1].z = 0.0f;
+_Vertex[2].x = -0.5f; _Vertex[2].y = -0.5f; _Vertex[2].z = 0.0f;
+_Vertex[3].x = 0.5f; _Vertex[3].y = -0.5f; _Vertex[3].z = 0.0f;
 
-m_pakVertices[0].color = DoMaRe_COLOR_RGB(255,0,0);
-m_pakVertices[1].color = DoMaRe_COLOR_RGB(255,0,0);
-m_pakVertices[2].color = DoMaRe_COLOR_RGB(255,0,0);
-m_pakVertices[3].color = DoMaRe_COLOR_RGB(255,0,0);
+
+// Setting the default Color (255,0,0)
+_Vertex[0].color = DoMaRe_COLOR_RGB(255,0,0);
+_Vertex[1].color = DoMaRe_COLOR_RGB(255,0,0);
+_Vertex[2].color = DoMaRe_COLOR_RGB(255,0,0);
+_Vertex[3].color = DoMaRe_COLOR_RGB(255,0,0);
 
 updateLocalTransformation();
 }
 
 Quad::~Quad(){
-	delete m_pkTransformationMatrix;
-	m_pkTransformationMatrix = NULL;
+	delete _TrMatrix;
+	_TrMatrix = NULL;
 
-	delete[] m_pakVertices;
-	m_pakVertices = NULL;
+	delete[] _Vertex;
+	_Vertex = NULL;
 }
 
 void Quad::setPos(float fPosX, float fPosY){
-	m_fPosX = fPosX;
-	m_fPosY = fPosY;
+	_PosX = fPosX;
+	_PosY = fPosY;
 
 	updateLocalTransformation();
 }
 
+void Quad::setColor(DWORD c){
+	for(int i = 0; i < 4; i++)
+		_Vertex[i].color = c;
+}
+
+void Quad::setColor(DWORD c, int v){
+	if(v >= 0 && v < 5)
+		_Vertex[v].color = c;
+}
+
 void Quad::setRotation(float fRotation){
-	m_fRotation = fRotation;
+	_Rot = fRotation;
 	updateLocalTransformation();
 }
 
 void Quad::setScale(float fScale){
-	m_fScale = fScale;
+	_Scale = fScale;
 	updateLocalTransformation();
 }
 
 void Quad::draw(Renderer& r) const{
-	r.setMatrix(World, m_pkTransformationMatrix);
-	r.Draw(m_pakVertices, DoMaRe::TriangleStrip, 4);
+	r.setMatrix(World, _TrMatrix);
+	r.Draw(_Vertex, DoMaRe::TriangleStrip, 4);
 }
 
 void Quad::updateLocalTransformation(){
  D3DXMATRIX translateMatrix;
- D3DXMatrixTranslation(&translateMatrix, m_fPosX, m_fPosY, 0);
+ D3DXMatrixTranslation(&translateMatrix, _PosX, _PosY, 0);
 
  D3DXMATRIX rotationMatrix;
- D3DXMatrixRotationZ(&rotationMatrix, m_fRotation);
+ D3DXMatrixRotationZ(&rotationMatrix, _Rot);
 
  D3DXMATRIX scaleMatrix;
- D3DXMatrixScaling(&scaleMatrix, m_fScale, m_fScale, 1);
+ D3DXMatrixScaling(&scaleMatrix, _Scale, _Scale, 1);
 
- D3DXMatrixIdentity(m_pkTransformationMatrix);
- D3DXMatrixMultiply(m_pkTransformationMatrix,&translateMatrix,m_pkTransformationMatrix);
- D3DXMatrixMultiply(m_pkTransformationMatrix,&rotationMatrix,m_pkTransformationMatrix);
- D3DXMatrixMultiply(m_pkTransformationMatrix,&scaleMatrix,m_pkTransformationMatrix);
+ D3DXMatrixIdentity(_TrMatrix);
+ D3DXMatrixMultiply(_TrMatrix,&translateMatrix,_TrMatrix);
+ D3DXMatrixMultiply(_TrMatrix,&rotationMatrix,_TrMatrix);
+ D3DXMatrixMultiply(_TrMatrix,&scaleMatrix,_TrMatrix);
 
 }

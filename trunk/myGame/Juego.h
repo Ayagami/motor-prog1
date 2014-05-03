@@ -10,7 +10,7 @@ namespace MiJuego{
 		void Frame(DoMaRe::Renderer&);
 		void DeInit();
 	private:
-		DoMaRe::Quad m_kQuad1;
-		DoMaRe::Quad m_kQuad2;
+		DoMaRe::Quad _Cubo1;
+		DoMaRe::Quad _Cubo2;
 	};
 }

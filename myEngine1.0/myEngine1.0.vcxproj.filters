@@ -48,6 +48,12 @@
     <ClInclude Include="EMath.h">
       <Filter>Archivos de encabezado\include</Filter>
     </ClInclude>
+    <ClInclude Include="Entity2D.h">
+      <Filter>Archivos de encabezado\include</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Archivos de encabezado\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renderer.cpp">
@@ -69,6 +75,12 @@
       <Filter>Archivos de código fuente\src</Filter>
     </ClCompile>
     <ClCompile Include="Quad.cpp">
+      <Filter>Archivos de código fuente\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity2D.cpp">
+      <Filter>Archivos de código fuente\src</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
       <Filter>Archivos de código fuente\src</Filter>
     </ClCompile>
   </ItemGroup>

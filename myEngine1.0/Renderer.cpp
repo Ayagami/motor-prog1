@@ -16,6 +16,11 @@ Renderer::~Renderer(){
 	delete p_vb;
 	p_vb = NULL;
 	}
+
+	if(p_vbT){
+	delete p_vbT;
+	p_vbT = NULL;
+	}
 	if(d3d_dev){
 	d3d_dev->Release();
 	d3d_dev = NULL;
@@ -26,7 +31,12 @@ Renderer::~Renderer(){
 	d3d = NULL;
 	}
 
-	
+	for(std::vector<Texture>::iterator it = r_vTextures.begin(); it != r_vTextures.end(); it++){
+		(*it)->Release();
+		(*it) = NULL;
+	}
+
+	r_vTextures.clear();
 }
 
 bool Renderer::Init(HWND _HwnD){
@@ -51,6 +61,7 @@ bool Renderer::Init(HWND _HwnD){
 		d3d_dev->SetTransform(D3DTS_PROJECTION, &projectionMatrix);
 
 		p_vb = new DoMaRe::VertexBuffer(d3d_dev, sizeof(DoMaRe::ColorVertex), DoMaRe::ColorVertexType);
+		p_vbT = new DoMaRe::VertexBuffer(d3d_dev, sizeof(DoMaRe::TexCoordVertex), DoMaRe::TexCoordVertexType);
 		return true;
 	}
 	return false;
@@ -87,7 +98,36 @@ void Renderer::setMatrix(MatrixType matrixType, const Matrix& matrix){
 	d3d_dev->SetTransform(MatrixTypeMapping[matrixType], matrix);
 }
 
+const Texture Renderer::loadTexture(const std::string& Fname){
+	IDirect3DTexture9* p_Texture = NULL;
+	HRESULT HR = D3DXCreateTextureFromFileEx(d3d_dev,
+											Fname.c_str(),
+											0,0,0,0,
+											D3DFMT_UNKNOWN, D3DPOOL_MANAGED,
+											D3DX_FILTER_NONE, D3DX_FILTER_NONE,
+											0,
+											NULL,
+											NULL,
+											&p_Texture);
+	if(HR != D3D_OK){
+		return NoTexture;
+	}
+	else{
+		r_vTextures.push_back(p_Texture);
+		return p_Texture;
+	}
+}
+
 void Renderer::Draw(ColorVertex* v, DoMaRe::Primitive p, size_t vC){
 	p_vb->bind();
 	p_vb->draw(v,primitiveMap[p], vC);
+}
+
+void Renderer::Draw(TexCoordVertex* v, DoMaRe::Primitive p, size_t vC){
+	p_vbT->bind();
+	p_vbT->draw(v,primitiveMap[p], vC);
+}
+
+void Renderer::setCurrentTexture(const Texture& r_Texture){
+	d3d_dev->SetTexture(0,r_Texture);
 }

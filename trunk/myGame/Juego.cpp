@@ -16,10 +16,10 @@ bool Game::Init(DoMaRe::Renderer& r){
 	for(int i = 0; i < 4; i++)
 		_Cubo2.setColor(DoMaRe_COLOR_RGB(85 + (i * 15), 30 + (i * 30),23 + (i*10)), i);
 		
-	_Sprite1.setScale(200.0f);
+	_Sprite1.setScale(100.0f);
 	_Sprite1.setPos(0.0f,0.0f);
 
-	DoMaRe::Texture _mTexture = r.loadTexture("assets/text.jpg");
+	DoMaRe::Texture _mTexture = r.loadTexture("assets/Zelda.png", DoMaRe_COLOR_RGB(0,0,0));
 	_Sprite1.setTexture(_mTexture);
 	//_Sprite1.setTextCoords(1,1,529,1,1,529,529,529);
 	return true;

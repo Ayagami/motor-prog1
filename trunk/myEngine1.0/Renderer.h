@@ -21,7 +21,7 @@ class MYENGINE_API Renderer{
 		void setMatrix(MatrixType, const Matrix&);
 		void Draw(ColorVertex*, DoMaRe::Primitive, size_t);
 		void Draw(TexCoordVertex*, DoMaRe::Primitive, size_t);
-		const Texture loadTexture (const std::string& Fname);
+		const Texture loadTexture (const std::string& Fname, int KeyCode);
 		void setCurrentTexture (const Texture& r_Texture);
 	private:
 		IDirect3D9  * d3d;

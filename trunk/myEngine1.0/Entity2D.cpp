@@ -50,3 +50,11 @@ void Entity2D::updateLocalTransformation(){
 const Matrix Entity2D::transformationMatrix(){
 	return (_TrMatrix);
 }
+
+float Entity2D::posX() const{
+	return _PosX;
+}
+
+float Entity2D::posY() const{
+	return _PosY;
+}

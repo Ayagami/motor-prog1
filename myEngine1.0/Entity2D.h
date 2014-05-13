@@ -10,8 +10,8 @@ namespace DoMaRe{
 		void setPos(float fPosX,float fPosY);
 		void setRotation(float fRotation);
 		void setScale(float fScale);
-		void posX() const;
-		void posY() const;
+		float posX() const;
+		float posY() const;
 		float rotation() const;
 		float scale() const;
 		void updateLocalTransformation();

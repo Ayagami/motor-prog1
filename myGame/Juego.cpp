@@ -24,7 +24,26 @@ bool Game::Init(DoMaRe::Renderer& r){
 	//_Sprite1.setTextCoords(1,1,529,1,1,529,529,529);
 	return true;
 }
-void Game::Frame(DoMaRe::Renderer& r){
+void Game::Frame(DoMaRe::Renderer& r, DoMaRe::DirectInput& eInput){
+	static float fSp = 1.0f;
+
+	if(eInput.keyDown(DoMaRe::Input::KEY_UP)){
+		_Sprite1.setPos(_Sprite1.posX(), _Sprite1.posY() + fSp);
+	}
+
+	if(eInput.keyDown(DoMaRe::Input::KEY_DOWN)){
+		_Sprite1.setPos(_Sprite1.posX(), _Sprite1.posY() - fSp);
+	}
+
+	if(eInput.keyDown(DoMaRe::Input::KEY_LEFT)){
+		_Sprite1.setPos(_Sprite1.posX() - fSp, _Sprite1.posY());
+	}
+
+	if(eInput.keyDown(DoMaRe::Input::KEY_RIGHT)){
+		_Sprite1.setPos(_Sprite1.posX() + fSp, _Sprite1.posY());
+	}
+	
+	
 	static float fRot = 0.0f;
 	fRot+= 0.001f;
 	_Cubo1.setRotation(fRot);

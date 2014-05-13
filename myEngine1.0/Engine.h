@@ -6,6 +6,7 @@ namespace DoMaRe{
 class Window;
 class Renderer;
 class Game;
+class DirectInput;
 	class MYENGINE_API Engine{
 
 		public:
@@ -19,6 +20,7 @@ class Game;
 			HINSTANCE hInstance;
 			Window* WndC;
 			Renderer* Rendr;
+			DirectInput* dInput;
 			int nCmdShow;
 			std::string _t;
 			int _w;

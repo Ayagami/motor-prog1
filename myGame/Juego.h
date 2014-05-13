@@ -4,11 +4,12 @@
 #include "Sprite.h"
 #include "RenderTypes.h"
 #include "Renderer.h"
+#include "input\pg1_directinput.h"
 namespace MiJuego{
 	class Game : public DoMaRe::Game{
 	public:
 		bool Init(DoMaRe::Renderer&);
-		void Frame(DoMaRe::Renderer&);
+		void Frame(DoMaRe::Renderer&, DoMaRe::DirectInput&);
 		void DeInit();
 	private:
 		DoMaRe::Quad _Cubo1;

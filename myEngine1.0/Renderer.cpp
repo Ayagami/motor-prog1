@@ -12,6 +12,7 @@ p_vb(NULL)
 
 Renderer::~Renderer(){
 
+
 	if(p_vb){
 	delete p_vb;
 	p_vb = NULL;

@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+#include <d3dx9.h>
 #include "myEngine_API.h"
 
 namespace DoMaRe{
@@ -7,8 +8,18 @@ namespace DoMaRe{
 		float x,y,z;
 		DWORD color;
 	};
-
+	
 	extern const DWORD ColorVertexType;
+
+	struct MYENGINE_API TexCoordVertex{
+		float x,y,z;
+		float u,v;
+	}; 
+
+	extern const int TexCoordVertexType;
+
+	typedef IDirect3DTexture9* Texture;
+	static const Texture NoTexture = NULL; 
 
 	enum Primitive{
 		TriangleList = 0,

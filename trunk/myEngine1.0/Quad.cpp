@@ -1,14 +1,16 @@
 #include "Quad.h"
+#include "Entity2D.h"
 #include "Renderer.h"
 #include <d3dx9.h>
 using namespace DoMaRe;
 
 Quad::Quad():
-_PosX(0.0f),
+/*_PosX(0.0f),
 _PosY(0.0f),
 _Rot(0.0f),
 _Scale(1.0f),
-_TrMatrix( new D3DXMATRIX() ),
+_TrMatrix( new D3DXMATRIX() ),*/
+Entity2D(),
 _Vertex( new ColorVertex[4]){
 
 _Vertex[0].x = -0.5f; _Vertex[0].y = 0.5f; _Vertex[0].z = 0.0f;
@@ -27,19 +29,16 @@ updateLocalTransformation();
 }
 
 Quad::~Quad(){
-	delete _TrMatrix;
-	_TrMatrix = NULL;
-
 	delete[] _Vertex;
 	_Vertex = NULL;
 }
 
-void Quad::setPos(float fPosX, float fPosY){
+/*void Quad::setPos(float fPosX, float fPosY){
 	_PosX = fPosX;
 	_PosY = fPosY;
 
 	updateLocalTransformation();
-}
+}*/
 
 void Quad::setColor(DWORD c){
 	for(int i = 0; i < 4; i++)
@@ -51,22 +50,23 @@ void Quad::setColor(DWORD c, int v){
 		_Vertex[v].color = c;
 }
 
-void Quad::setRotation(float fRotation){
+/*void Quad::setRotation(float fRotation){
 	_Rot = fRotation;
 	updateLocalTransformation();
-}
+}*/
 
-void Quad::setScale(float fScale){
+/*void Quad::setScale(float fScale){
 	_Scale = fScale;
 	updateLocalTransformation();
-}
+}*/
 
 void Quad::draw(Renderer& r) const{
-	r.setMatrix(World, _TrMatrix);
+	r.setCurrentTexture(NoTexture);
+	r.setMatrix(World, _TrMatrix );
 	r.Draw(_Vertex, DoMaRe::TriangleStrip, 4);
 }
 
-void Quad::updateLocalTransformation(){
+/*void Quad::updateLocalTransformation(){
  D3DXMATRIX translateMatrix;
  D3DXMatrixTranslation(&translateMatrix, _PosX, _PosY, 0);
 
@@ -81,4 +81,4 @@ void Quad::updateLocalTransformation(){
  D3DXMatrixMultiply(_TrMatrix,&rotationMatrix,_TrMatrix);
  D3DXMatrixMultiply(_TrMatrix,&scaleMatrix,_TrMatrix);
 
-}
+}*/

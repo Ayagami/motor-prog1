@@ -1,6 +1,7 @@
 #pragma once
 #include "Game.h"
 #include "Quad.h"
+#include "Sprite.h"
 #include "RenderTypes.h"
 #include "Renderer.h"
 namespace MiJuego{
@@ -12,5 +13,6 @@ namespace MiJuego{
 	private:
 		DoMaRe::Quad _Cubo1;
 		DoMaRe::Quad _Cubo2;
+		DoMaRe::Sprite _Sprite1;
 	};
 }

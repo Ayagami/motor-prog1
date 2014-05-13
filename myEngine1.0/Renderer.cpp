@@ -50,6 +50,11 @@ bool Renderer::Init(HWND _HwnD){
 		d3d_dev->SetRenderState(D3DRS_LIGHTING,FALSE);
 		d3d_dev->SetRenderState(D3DRS_CULLMODE,D3DCULL_NONE);
 		
+		d3d_dev->SetRenderState(D3DRS_ALPHABLENDENABLE,TRUE);
+		d3d_dev->SetRenderState(D3DRS_BLENDOP,D3DBLENDOP_ADD);
+		d3d_dev->SetRenderState(D3DRS_SRCBLEND,D3DBLEND_SRCALPHA);
+		d3d_dev->SetRenderState(D3DRS_DESTBLEND,D3DBLEND_INVSRCALPHA);
+
 		D3DVIEWPORT9 kViewport;
 		d3d_dev->GetViewport(&kViewport);
 
@@ -98,14 +103,14 @@ void Renderer::setMatrix(MatrixType matrixType, const Matrix& matrix){
 	d3d_dev->SetTransform(MatrixTypeMapping[matrixType], matrix);
 }
 
-const Texture Renderer::loadTexture(const std::string& Fname){
+const Texture Renderer::loadTexture(const std::string& Fname, int KeyCode){
 	IDirect3DTexture9* p_Texture = NULL;
 	HRESULT HR = D3DXCreateTextureFromFileEx(d3d_dev,
 											Fname.c_str(),
 											0,0,0,0,
 											D3DFMT_UNKNOWN, D3DPOOL_MANAGED,
 											D3DX_FILTER_NONE, D3DX_FILTER_NONE,
-											0,
+											KeyCode,
 											NULL,
 											NULL,
 											&p_Texture);

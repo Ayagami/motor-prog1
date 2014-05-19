@@ -8,4 +8,7 @@ int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance, LPTSTR lpCmdLine,
 	myEngine.init();
 	myEngine.G = new MiJuego::Game();
 	myEngine.run();
+
+	delete myEngine.G;
+	myEngine.G = NULL;
 }

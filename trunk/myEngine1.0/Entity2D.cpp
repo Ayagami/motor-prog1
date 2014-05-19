@@ -12,6 +12,8 @@ _TrMatrix( new D3DXMATRIX() )
 
 }
 Entity2D::~Entity2D(){
+	delete _TrMatrix;
+	_TrMatrix = NULL;
 }
 
 void Entity2D::setPos(float fPosX, float fPosY){

@@ -7,8 +7,8 @@
 #include "RenderTypes.h"
 #include "EMath.h"
 #include <d3d9.h>
-namespace DoMaRe{
-/*class VertexBuffer;
+namespace DoMaRe{/*
+class VertexBuffer;
 struct ColorVertex;
 struct TexCoordVertex;*/
 class MYENGINE_API Renderer{

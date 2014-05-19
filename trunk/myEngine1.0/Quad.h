@@ -10,22 +10,8 @@ namespace DoMaRe{
 		Quad();
 		~Quad();
 	public:
-		/*void setPos(float fPosX,float fPosY);
-		void setRotation(float fRotation);
-		void setScale(float fScale);*/
 		void setColor(DWORD c);
-		void setColor(DWORD c, int v); /*
-		float posX() const;
-		float posY() const;
-		float rotation() const;
-		float scale() const;*/
-
-	/*private:
-		float _PosX, _PosY;
-		float _Rot;
-		float _Scale;
-		Matrix _TrMatrix;
-		void updateLocalTransformation();*/
+		void setColor(DWORD c, int v);
 
 	public:
 		void draw(Renderer& r) const;

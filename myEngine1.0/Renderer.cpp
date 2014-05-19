@@ -1,6 +1,5 @@
 #pragma once
 #include "Renderer.h"
-//#include "Math.h"
 using namespace DoMaRe;
 Renderer::Renderer():
 d3d(NULL),

@@ -1,6 +1,8 @@
 #include "Sprite.h"
 #include "Entity2D.h"
 #include "Renderer.h"
+#include "timer\pg1_timer.h"
+#include "animation.h"
 #include <d3dx9.h>
 using namespace DoMaRe;
 
@@ -34,6 +36,21 @@ void Sprite::setTextCoords( float U1, float V1,
 
 void Sprite::setTexture(Texture& _Texture){
 	s_Texture = _Texture;
+}
+
+void Sprite::setAnimation(Animation* pkAnimation){
+	m_pkAnimation = pkAnimation;
+}
+void Sprite::update(Timer& rkTimer){
+	if(!m_pkAnimation){
+		return;
+	}
+	m_pkAnimation->update(rkTimer);
+	unsigned int uiCurrentFrame = m_pkAnimation->currentFrame();
+	if(uiCurrentFrame != m_uiPreviousFrame){
+		const Animation::Frame& rkFrame = m_pkAnimation->frames()[uiCurrentFrame];
+		setTextCoords(rkFrame.u1, rkFrame.v1,rkFrame.u2, rkFrame.v2,rkFrame.u3, rkFrame.v3,rkFrame.u4, rkFrame.v4);
+	}
 }
 
 void Sprite::draw(Renderer& r) const{

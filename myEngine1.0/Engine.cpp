@@ -4,10 +4,11 @@
 #include "Window.h"
 #include "Renderer.h"
 #include "Game.h"
+#include "timer\pg1_timer.h"
 #include "input\pg1_directinput.h"
 using namespace DoMaRe;
 Engine::Engine(HINSTANCE hInst, int nCmdS, std::string t, int w, int h):
-hInstance(hInst),nCmdShow(nCmdS), _t(t), _w(w), _h(h), hWnd(0), WndC(new Window(hInst) ), Rendr(new Renderer), G(NULL), dInput( new DirectInput() ){
+hInstance(hInst),nCmdShow(nCmdS), _t(t), _w(w), _h(h), hWnd(0), WndC(new Window(hInst) ), Rendr(new Renderer), G(NULL), dInput( new DirectInput() ), m_pkTimer( new Timer() ){
 	// So... Why so Serious?
 }
 bool Engine::init(){
@@ -22,13 +23,16 @@ void Engine::run(){
 
 	if(!G) return;
 	if(!G->Init(*Rendr)) return;
-	while(G->getGame()){
-		dInput->reacquire();
+	m_pkTimer->firstMeasure();
 
+	while(G->getGame()){
+
+		m_pkTimer->measure();
+		
+		dInput->reacquire();
 		Rendr->BeginFrame();
 		G->Frame(*Rendr, *dInput);
 		Rendr->EndFrame();
-		
 		if(PeekMessage(&Mess,NULL,0,0,PM_REMOVE)){
 			TranslateMessage(&Mess);
 			DispatchMessage(&Mess);
@@ -38,6 +42,11 @@ void Engine::run(){
 	}
 }
 Engine::~Engine(){
+	if(m_pkTimer){
+	delete m_pkTimer;
+	m_pkTimer = NULL;
+	}
+
 	if(dInput){
 	delete dInput;
 	dInput = NULL;

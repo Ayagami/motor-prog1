@@ -4,6 +4,8 @@
 #include "Entity2D.h"
 namespace DoMaRe{
 class Renderer;
+class Animation;
+class Timer;
 class MYENGINE_API Sprite : public Entity2D{
 public:
 	Sprite();
@@ -15,10 +17,16 @@ public:
 						float U3, float V3,
 						float U4, float V4
 	);
-
+	void setAnimation(Animation* pkAnimation);
+	void update(Timer& rkTimer);
+	
 	void draw(Renderer& r) const;
 private:
 	Texture s_Texture;
 	TexCoordVertex* s_Vertex;
+	
+	Animation* m_pkAnimation;
+	unsigned int m_uiPreviousFrame;
+	
 };
 }

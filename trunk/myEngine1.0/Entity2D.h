@@ -9,7 +9,7 @@ namespace DoMaRe{
 	public:
 		void setPos(float fPosX,float fPosY);
 		void setRotation(float fRotation);
-		void setScale(float fScale);
+		void setScale(float fScaleX, float fScaleY);
 		float posX() const;
 		float posY() const;
 		float rotation() const;
@@ -19,7 +19,7 @@ namespace DoMaRe{
 	private:
 		float _PosX, _PosY;
 		float _Rot;
-		float _Scale;
+		float _ScaleX,_ScaleY;
 	protected:
 		Matrix _TrMatrix;
 	};

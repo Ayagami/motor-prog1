@@ -7,6 +7,7 @@ class Window;
 class Renderer;
 class Game;
 class DirectInput;
+class Timer;
 	class MYENGINE_API Engine{
 
 		public:
@@ -21,9 +22,11 @@ class DirectInput;
 			Window* WndC;
 			Renderer* Rendr;
 			DirectInput* dInput;
+			Timer* m_pkTimer;
 			int nCmdShow;
 			std::string _t;
 			int _w;
 			int _h;
+		
 	};
 }

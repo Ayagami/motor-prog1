@@ -6,7 +6,8 @@ Entity2D::Entity2D() :
 _PosX(0.0f),
 _PosY(0.0f),
 _Rot(0.0f),
-_Scale(1.0f),
+_ScaleX(1.0f),
+_ScaleY(1.0f),
 _TrMatrix( new D3DXMATRIX() )
 {
 
@@ -28,8 +29,9 @@ void Entity2D::setRotation(float fRotation){
 	updateLocalTransformation();
 }
 
-void Entity2D::setScale(float fScale){
-	_Scale = fScale;
+void Entity2D::setScale(float fScaleX, float fScaleY){
+	_ScaleX = fScaleX;
+	_ScaleY = fScaleY;
 	updateLocalTransformation();
 }
 
@@ -41,7 +43,7 @@ void Entity2D::updateLocalTransformation(){
  D3DXMatrixRotationZ(&rotationMatrix, _Rot);
 
  D3DXMATRIX scaleMatrix;
- D3DXMatrixScaling(&scaleMatrix, _Scale, _Scale, 1);
+ D3DXMatrixScaling(&scaleMatrix, _ScaleX, _ScaleY, 1);
 
  D3DXMatrixIdentity(_TrMatrix);
  D3DXMatrixMultiply(_TrMatrix,&translateMatrix,_TrMatrix);

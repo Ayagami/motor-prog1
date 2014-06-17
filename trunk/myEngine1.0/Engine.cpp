@@ -31,7 +31,7 @@ void Engine::run(){
 		
 		dInput->reacquire();
 		Rendr->BeginFrame();
-		G->Frame(*Rendr, *dInput);
+		G->Frame(*Rendr, *dInput, *m_pkTimer);
 		Rendr->EndFrame();
 		if(PeekMessage(&Mess,NULL,0,0,PM_REMOVE)){
 			TranslateMessage(&Mess);

@@ -1,4 +1,5 @@
 #pragma once
+#include <sstream>
 #include "Engine.h"
 #include <string>
 #include "Window.h"
@@ -28,7 +29,21 @@ void Engine::run(){
 	while(G->getGame()){
 
 		m_pkTimer->measure();
-		
+		/*
+		std::string p = WndC->getWindowName();
+		p +=  " ";
+		p += m_pkTimer->fps();
+		p += " FPS";
+
+		LPSTR s = const_char<char*>(p.c_str());
+		*/
+
+		static std::stringstream Title;
+		Title.str("");
+		Title << WndC->getWindowName()<< " (" << m_pkTimer->fps() << " FPS)";
+
+		WndC->setWindowName(Title.str());
+
 		dInput->reacquire();
 		Rendr->BeginFrame();
 		G->Frame(*Rendr, *dInput, *m_pkTimer);

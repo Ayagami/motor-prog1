@@ -12,6 +12,8 @@ _PosY(0.0f),
 _Rot(0.0f),
 _ScaleX(1.0f),
 _ScaleY(1.0f),
+_UseGravity(false),
+_Gravity(1.5f),
 _TrMatrix( new D3DXMATRIX() )
 {
 
@@ -31,6 +33,14 @@ void Entity2D::setPos(float fPosX, float fPosY){
 	updateLocalTransformation();
 }
 
+float Entity2D::getGravity() const{
+	return _Gravity;
+}
+
+bool Entity2D::isUsingGravity() const{
+	return _UseGravity;
+}
+
 void Entity2D::setRotation(float fRotation){
 	_Rot = fRotation;
 	updateLocalTransformation();
@@ -40,6 +50,14 @@ void Entity2D::setScale(float fScaleX, float fScaleY){
 	_ScaleX = fScaleX;
 	_ScaleY = fScaleY;
 	updateLocalTransformation();
+}
+
+void Entity2D::SetGravity(float _G){
+	_Gravity = _G;
+}
+
+void Entity2D::UseGravity(bool _T){
+	_UseGravity = _T;
 }
 
 void Entity2D::updateLocalTransformation(){
@@ -120,11 +138,11 @@ void Entity2D::drawAABB(Renderer& rkRenderer) const{
 	if(!s_bIsInitialized){
 		s_bIsInitialized = true;
 
-		s_akAABBVertices[0].x = -0.5;	s_akAABBVertices[0].y = -0.5;	s_akAABBVertices[0].z = 0.0; s_akAABBVertices[0].color = DoMaRe_COLOR_RGB(255,0,0);
-		s_akAABBVertices[1].x = -0.5;	s_akAABBVertices[1].y = 0.5;	s_akAABBVertices[1].z = 0.0; s_akAABBVertices[1].color = DoMaRe_COLOR_RGB(255,0,0);
-		s_akAABBVertices[2].x = 0.5;	s_akAABBVertices[2].y = 0.5;	s_akAABBVertices[2].z = 0.0; s_akAABBVertices[2].color = DoMaRe_COLOR_RGB(255,0,0);
-		s_akAABBVertices[3].x = 0.5;	s_akAABBVertices[3].y = -0.5;	s_akAABBVertices[3].z = 0.0; s_akAABBVertices[3].color = DoMaRe_COLOR_RGB(255,0,0);
-		s_akAABBVertices[4].x = -0.5;	s_akAABBVertices[4].y = -0.5;	s_akAABBVertices[4].z = 0.0; s_akAABBVertices[4].color = DoMaRe_COLOR_RGB(255,0,0);
+		s_akAABBVertices[0].x = -0.5;	s_akAABBVertices[0].y = -0.5;	s_akAABBVertices[0].z = 0.0; s_akAABBVertices[0].color = DoMaRe_COLOR_RGB(255,50,50);
+		s_akAABBVertices[1].x = -0.5;	s_akAABBVertices[1].y = 0.5;	s_akAABBVertices[1].z = 0.0; s_akAABBVertices[1].color = DoMaRe_COLOR_RGB(255,70,70);
+		s_akAABBVertices[2].x = 0.5;	s_akAABBVertices[2].y = 0.5;	s_akAABBVertices[2].z = 0.0; s_akAABBVertices[2].color = DoMaRe_COLOR_RGB(255,30,30);
+		s_akAABBVertices[3].x = 0.5;	s_akAABBVertices[3].y = -0.5;	s_akAABBVertices[3].z = 0.0; s_akAABBVertices[3].color = DoMaRe_COLOR_RGB(255,15,15);
+		s_akAABBVertices[4].x = -0.5;	s_akAABBVertices[4].y = -0.5;	s_akAABBVertices[4].z = 0.0; s_akAABBVertices[4].color = DoMaRe_COLOR_RGB(255,95,90);
 	}
 
 	rkRenderer.setCurrentTexture(NoTexture);

@@ -13,8 +13,9 @@ class Timer;
 			float u3;	float v3;
 			float u4;	float v4;
 		};
+		unsigned int m_uiCurrentFrame;
 		unsigned int currentFrame() const;
-		const std::vector<Frame> &frames () const { return m_akFrames; };
+		const std::vector<Frame> &frames () const { return m_akFrames; }
 		void addFrame (float fTextureWidth, float fTextureHeight, 
 					   float fFramePosX,	float fFramePosY,
 					   float fFrameWidth,	float fFrameHeight
@@ -24,8 +25,8 @@ class Timer;
 	public:
 		void setLength(float fLength);
 		void update(Timer& rkTimer);
+		void resetFrames();
 	private:
-		unsigned int m_uiCurrentFrame;
 		float m_fCurrentTime;
 		float m_fLength;
 	};

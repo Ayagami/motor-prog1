@@ -12,6 +12,8 @@ namespace DoMaRe{
 		void setRotation(float fRotation);
 		void setScale(float fScaleX, float fScaleY);
 
+		void UseGravity(bool _T);
+		void SetGravity(float _G);
 		float posX() const;
 		float posY() const;
 		float rotation() const;
@@ -20,6 +22,8 @@ namespace DoMaRe{
 		float scaleY() const;
 		float previousPosX() const;
 		float previousPosY() const;
+		float getGravity() const;
+		bool isUsingGravity() const;
 
 		enum CollisionResult{
 			CollisionVertical,
@@ -38,7 +42,8 @@ namespace DoMaRe{
 		float _Rot;
 		float _ScaleX,_ScaleY;
 		float _PreviousPosX, _PreviousPosY;
-
+		float _Gravity;
+		bool _UseGravity;
 	protected:
 		Matrix _TrMatrix;
 	};

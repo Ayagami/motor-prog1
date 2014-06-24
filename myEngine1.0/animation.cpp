@@ -27,6 +27,10 @@ rkFrame.v4 = ( (fFramePosY + fFrameHeight)/ fTextureHeight);
 m_akFrames.push_back(rkFrame);
 }
 
+void Animation::resetFrames(){
+	m_uiCurrentFrame = 0;
+}
+
 void Animation::update(Timer& rkTimer){
 	m_fCurrentTime += rkTimer.timeBetweenFrames();
 	while(m_fCurrentTime > m_fLength){

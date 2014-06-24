@@ -89,21 +89,17 @@ void Game::Frame(DoMaRe::Renderer& r, DoMaRe::DirectInput& eInput, DoMaRe::Timer
 		else
 		_Sprite2.setScale(-60.0f, 160.0f);
 	}
-	
-/*	
-	static float fRot = 0.0f;
-	fRot+= 0.001f;
-	_Cubo1.setRotation(fRot);
 
+	if(_Sprite2.checkCollision(_Cubo1) == DoMaRe::Entity2D::CollisionHorizontal ){
+		_Sprite2.returnToPos( _Sprite2.previousPosX(), _Sprite2.posY() );
+	}else if(_Sprite2.checkCollision(_Cubo1) == DoMaRe::Entity2D::CollisionVertical){
+		_Sprite2.returnToPos( _Sprite2.posX() , _Sprite2.previousPosY() );
+	}
 	
-	_Cubo2.draw(r);
-	
-	_Sprite1.setRotation(fRot);
-	_Sprite1.draw(r);
-	*/
 	_Cubo1.draw(r);
 	_Sprite2.update(t);
 	_Sprite2.draw(r);
+	//_Sprite2.drawAABB(r);
 }
 void Game::DeInit(){
 }

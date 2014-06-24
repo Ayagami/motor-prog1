@@ -19,7 +19,8 @@ public:
 	);
 	void setAnimation(Animation* pkAnimation);
 	void update(Timer& rkTimer);
-	
+	void UpdateGravityPos();
+
 	void draw(Renderer& r) const;
 private:
 	Texture s_Texture;

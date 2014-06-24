@@ -20,5 +20,6 @@ namespace MiJuego{
 
 		DoMaRe::Animation m_Sprite2_Idle;
 		DoMaRe::Animation m_Sprite2_Walk;
+		DoMaRe::Animation m_Sprite2_Jump;
 	};
 }

@@ -3,8 +3,8 @@ bool d = true;
 using namespace MiJuego;
 
 bool Game::Init(DoMaRe::Renderer& r){
-	_Cubo1.setScale(100.0f,100.0f);
-	_Cubo1.setPos(100.0f,100.0f);
+	_Cubo1.setScale(1000.0f,30.0f);
+	_Cubo1.setPos(0,-300);
 	/*
 	_Cubo2.setScale(200.0f,200.0f);
 	_Cubo2.setPos(-100.0f,-100.0f);
@@ -21,6 +21,8 @@ bool Game::Init(DoMaRe::Renderer& r){
 	DoMaRe::Texture _mTexture = r.loadTexture("assets/Zelda.png", DoMaRe_COLOR_RGB(0,0,0));
 	_Sprite1.setTexture(_mTexture);
 	*/
+	_Sprite2.UseGravity(true);
+	_Sprite2.SetGravity(0.1f);
 	DoMaRe::Texture kCharactersTexture = r.loadTexture("assets/Link.png", DoMaRe_COLOR_RGB(0,255,0));
 	_Sprite2.setTexture(kCharactersTexture);
 
@@ -51,6 +53,17 @@ bool Game::Init(DoMaRe::Renderer& r){
 	m_Sprite2_Walk.addFrame(512.0f, 1024.0f, 188.0f, 173.0f, 35.0f, 36.0f);
 	m_Sprite2_Walk.addFrame(512.0f, 1024.0f, 239.0f, 173.0f, 33.0f, 36.0f);
 
+	m_Sprite2_Jump.setLength(1000.0f);
+//	m_Sprite2_Jump.addFrame(512.0f, 1024.0f, 239.0f, 22.0f, 34.0f, 38.0f);
+//	m_Sprite2_Jump.addFrame(512.0f, 1024.0f, 291.0f, 27.0f, 30.0f, 28.0f);
+	m_Sprite2_Jump.addFrame(512.0f, 1024.0f, 342.0f, 18.0f, 28.0f, 45.0f);
+	m_Sprite2_Jump.addFrame(512.0f, 1024.0f, 387.0f, 19.0f, 38.0f, 43.0f);
+	m_Sprite2_Jump.addFrame(512.0f, 1024.0f, 440.0f, 9.0f, 31.0f, 54.0f);
+	m_Sprite2_Jump.addFrame(512.0f, 1024.0f, 440.0f, 9.0f, 31.0f, 54.0f);
+	m_Sprite2_Jump.addFrame(512.0f, 1024.0f, 440.0f, 9.0f, 31.0f, 54.0f);
+	m_Sprite2_Jump.addFrame(512.0f, 1024.0f, 440.0f, 9.0f, 31.0f, 54.0f);
+	m_Sprite2_Jump.addFrame(512.0f, 1024.0f, 440.0f, 9.0f, 31.0f, 54.0f);
+
 	_Sprite2.setScale(60.0f, 160.0f);
 	_Sprite2.setPos(0.0f, 100.0f);
 	_Sprite2.setAnimation(&m_Sprite2_Idle);
@@ -61,45 +74,81 @@ bool Game::Init(DoMaRe::Renderer& r){
 }
 void Game::Frame(DoMaRe::Renderer& r, DoMaRe::DirectInput& eInput, DoMaRe::Timer& t){
 	static float fSp = 3.0f;
+	static float initGravity = _Sprite2.getGravity();
+	static float jumpSpeed = 7;
+	static bool isJumping = false;
 
-	/*if(eInput.keyDown(DoMaRe::Input::KEY_UP)){
-		_Sprite1.setPos(_Sprite1.posX(), _Sprite1.posY() + fSp);
+	if(_Sprite2.checkCollision(_Cubo1) == DoMaRe::Entity2D::CollisionHorizontal ){
+		isJumping = true;
+		//_Sprite2.setAnimation(&m_Sprite2_Jump);
+		//_Sprite2.setAnimation(&m_Sprite2_Idle);
+
+		_Sprite2.UseGravity(true);
+		_Sprite2.SetGravity( _Sprite2.getGravity()  +  fSp / 10 /*  / t.fps() / 100*/ );				
+		_Sprite2.returnToPos( _Sprite2.previousPosX(), _Sprite2.posY() );
+	}else if(_Sprite2.checkCollision(_Cubo1) == DoMaRe::Entity2D::CollisionVertical){
+		isJumping = false;
+		//_Sprite2.setAnimation(&m_Sprite2_Jump);
+		_Sprite2.UseGravity(false);
+		_Sprite2.SetGravity(initGravity);
+		_Sprite2.returnToPos( _Sprite2.posX() , _Sprite2.previousPosY() );
+	}else{
+		isJumping = true;
+		//_Sprite2.setAnimation(&m_Sprite2_Jump);
+		_Sprite2.UseGravity(true);
+		_Sprite2.SetGravity( _Sprite2.getGravity()  +  fSp / 10 /*  / t.fps() / 100*/ );
 	}
-
-	if(eInput.keyDown(DoMaRe::Input::KEY_DOWN)){
-		_Sprite1.setPos(_Sprite1.posX(), _Sprite1.posY() - fSp);
-	}*/
 
 	if(eInput.keyDown(DoMaRe::Input::KEY_LEFT)){
+
+		if(eInput.keyDown(DoMaRe::Input::KEY_UP) && isJumping == false){
+		_Sprite2.setAnimation(&m_Sprite2_Jump);
+		_Sprite2.setPos(_Sprite2.posX(), _Sprite2.posY() + 0.5f);
+		_Sprite2.SetGravity(-jumpSpeed);
+		_Sprite2.UseGravity(true);
+		isJumping = true;
+		}
+
 		_Sprite2.setPos(_Sprite2.posX() - fSp, _Sprite2.posY());
-		_Sprite2.setAnimation(&m_Sprite2_Walk);
+		if(!isJumping) _Sprite2.setAnimation(&m_Sprite2_Walk);
 		d=false;
-		_Sprite2.setScale( -90.0f, 160.0f);
+		if(!isJumping) _Sprite2.setScale( -90.0f, 160.0f);
 	}
 	else if(eInput.keyDown(DoMaRe::Input::KEY_RIGHT)){
-		_Sprite2.setPos(_Sprite2.posX() + fSp, _Sprite2.posY());
-		_Sprite2.setAnimation(&m_Sprite2_Walk);
-		d=true;
-		_Sprite2.setScale( 90.0f, 160.0f);
-	}else{
-		_Sprite2.setAnimation(&m_Sprite2_Idle);
 
+		if(eInput.keyDown(DoMaRe::Input::KEY_UP) && isJumping == false){
+		_Sprite2.setAnimation(&m_Sprite2_Jump);
+		_Sprite2.setPos(_Sprite2.posX(), _Sprite2.posY() + 0.5f);
+		_Sprite2.SetGravity(-jumpSpeed);
+		_Sprite2.UseGravity(true);
+		isJumping = true;
+		}
+		_Sprite2.setPos(_Sprite2.posX() + fSp, _Sprite2.posY());
+		if(!isJumping) _Sprite2.setAnimation(&m_Sprite2_Walk);
+		d=true;
+		if(!isJumping)_Sprite2.setScale( 90.0f, 160.0f);
+	}else if(eInput.keyDown(DoMaRe::Input::KEY_UP) && isJumping == false){
+		_Sprite2.setPos(_Sprite2.posX(), _Sprite2.posY() + 0.5f);
+		_Sprite2.setAnimation(&m_Sprite2_Jump);
+		_Sprite2.SetGravity(-jumpSpeed);
+		_Sprite2.UseGravity(true);
+	}else{
+		if(!isJumping)_Sprite2.setAnimation(&m_Sprite2_Idle);
+		//if(!isJumping)_Sprite2.setAnimation(&m_Sprite2_Jump);
 		if(d)
 		_Sprite2.setScale(60.0f, 160.0f);
 		else
 		_Sprite2.setScale(-60.0f, 160.0f);
 	}
 
-	if(_Sprite2.checkCollision(_Cubo1) == DoMaRe::Entity2D::CollisionHorizontal ){
-		_Sprite2.returnToPos( _Sprite2.previousPosX(), _Sprite2.posY() );
-	}else if(_Sprite2.checkCollision(_Cubo1) == DoMaRe::Entity2D::CollisionVertical){
-		_Sprite2.returnToPos( _Sprite2.posX() , _Sprite2.previousPosY() );
-	}
+
 	
 	_Cubo1.draw(r);
+	_Sprite2.UpdateGravityPos();
 	_Sprite2.update(t);
 	_Sprite2.draw(r);
-	//_Sprite2.drawAABB(r);
+	_Sprite2.drawAABB(r);
+	_Cubo1.drawAABB(r);
 }
 void Game::DeInit(){
 }

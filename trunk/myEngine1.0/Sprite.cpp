@@ -58,3 +58,10 @@ void Sprite::draw(Renderer& r) const{
 	r.setMatrix( World, _TrMatrix );
 	r.Draw(s_Vertex, DoMaRe::TriangleStrip, 4);
 }
+
+void Sprite::UpdateGravityPos(){
+	if(isUsingGravity()){
+		setPos(posX(), posY() - getGravity());
+		updateLocalTransformation();
+	}
+}

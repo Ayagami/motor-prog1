@@ -2,8 +2,8 @@
 #include <sstream>
 #include "Engine.h"
 #include <string>
-#include "Window.h"
-#include "Renderer.h"
+#include "Renderer\Window.h"
+#include "Renderer\Renderer.h"
 #include "Game.h"
 #include "timer\pg1_timer.h"
 #include "input\pg1_directinput.h"
@@ -29,15 +29,6 @@ void Engine::run(){
 	while(G->getGame()){
 
 		m_pkTimer->measure();
-		/*
-		std::string p = WndC->getWindowName();
-		p +=  " ";
-		p += m_pkTimer->fps();
-		p += " FPS";
-
-		LPSTR s = const_char<char*>(p.c_str());
-		*/
-
 		static std::stringstream Title;
 		Title.str("");
 		Title << WndC->getWindowName()<< " (" << m_pkTimer->fps() << " FPS)";

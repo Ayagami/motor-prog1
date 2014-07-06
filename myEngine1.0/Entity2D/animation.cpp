@@ -1,5 +1,5 @@
 #include "animation.h"
-#include "timer\pg1_timer.h"
+#include "..\timer\pg1_timer.h"
 
 using namespace DoMaRe;
 Animation::Animation() : m_uiCurrentFrame(0), m_fCurrentTime(0), m_fLength(1.0f){

@@ -2,8 +2,8 @@
 #include <Windows.h>
 #include <string>
 #include <vector>
-#include "VertexBuffer.h"
-#include "myEngine_API.h"
+#include "../VertexBuffer/VertexBuffer.h"
+#include "../myEngine_API.h"
 #include "RenderTypes.h"
 #include "EMath.h"
 #include <d3d9.h>

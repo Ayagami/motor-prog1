@@ -1,6 +1,6 @@
 #pragma once
-#include "EMath.h"
-#include "RenderTypes.h"
+#include "../Renderer/EMath.h"
+#include "../Renderer/RenderTypes.h"
 namespace DoMaRe{
 	class Renderer;
 	class MYENGINE_API Entity2D{

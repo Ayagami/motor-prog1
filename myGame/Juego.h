@@ -1,10 +1,10 @@
 #pragma once
 #include "Game.h"
-#include "Quad.h"
-#include "Sprite.h"
-#include "RenderTypes.h"
-#include "Renderer.h"
-#include "animation.h"
+#include "Entity2D\Quad.h"
+#include "Entity2D\Sprite.h"
+#include "Renderer\RenderTypes.h"
+#include "Renderer\Renderer.h"
+#include "Entity2D\animation.h"
 #include "timer\pg1_timer.h"
 #include "input\pg1_directinput.h"
 namespace MiJuego{
@@ -16,6 +16,7 @@ namespace MiJuego{
 	private:
 
 		DoMaRe::Quad _Cubo1;
+
 		DoMaRe::Sprite _Sprite2;
 
 		DoMaRe::Animation m_Sprite2_Idle;

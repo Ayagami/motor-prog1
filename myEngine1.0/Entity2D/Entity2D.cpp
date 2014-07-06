@@ -3,7 +3,7 @@
 #include <Windows.h>
 #include <iostream>
 #include "Entity2D.h"
-#include "Renderer.h"
+#include "..\Renderer\Renderer.h"
 #include <d3dx9.h>
 using namespace DoMaRe;
 Entity2D::Entity2D() :

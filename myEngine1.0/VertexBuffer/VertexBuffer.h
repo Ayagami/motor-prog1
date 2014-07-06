@@ -3,7 +3,7 @@
 #ifndef PG1_VERTEXBUFFER_H
 #define PG1_VERTEXBUFFER_H
 //---------------------------------------------------------------------------
-#include "myEngine_API.h"
+#include "../myEngine_API.h"
 //---------------------------------------------------------------------------
 #include <d3d9.h>
 #include <d3dx9.h>

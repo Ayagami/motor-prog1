@@ -1,7 +1,7 @@
 #include "Sprite.h"
 #include "Entity2D.h"
-#include "Renderer.h"
-#include "timer\pg1_timer.h"
+#include "..\Renderer\Renderer.h"
+#include "..\timer\pg1_timer.h"
 #include "animation.h"
 #include <d3dx9.h>
 using namespace DoMaRe;

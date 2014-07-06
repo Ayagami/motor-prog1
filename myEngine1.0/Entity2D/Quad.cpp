@@ -1,6 +1,6 @@
 #include "Quad.h"
 #include "Entity2D.h"
-#include "Renderer.h"
+#include "..\Renderer\Renderer.h"
 #include <d3dx9.h>
 using namespace DoMaRe;
 

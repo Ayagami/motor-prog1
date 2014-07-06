@@ -15,7 +15,7 @@ bool Scene::Frame(DoMaRe::Renderer& r){
 	if(!m_pkEntidades.empty()){
 		std::list<Entity2D*>::iterator it;
 		for(it = m_pkEntidades.begin(); it != m_pkEntidades.end(); it++){
-			//(*it)->draw(r);
+			(*it)->draw(r);
 		}
 		return true;
 	}

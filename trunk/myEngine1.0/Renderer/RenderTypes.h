@@ -1,7 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include <d3dx9.h>
-#include "myEngine_API.h"
+#include "../myEngine_API.h"
 
 namespace DoMaRe{
 	struct MYENGINE_API ColorVertex{

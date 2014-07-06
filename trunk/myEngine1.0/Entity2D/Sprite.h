@@ -1,6 +1,6 @@
 //#include "EMath.h"
-#include "RenderTypes.h"
-#include "myEngine_API.h"
+#include "../Renderer/RenderTypes.h"
+#include "../myEngine_API.h"
 #include "Entity2D.h"
 namespace DoMaRe{
 class Renderer;

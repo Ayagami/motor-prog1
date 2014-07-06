@@ -31,15 +31,27 @@
     <Filter Include="Archivos de código fuente\src\timer">
       <UniqueIdentifier>{1bfb9367-60a8-4ac8-8661-f156dd959ce4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\include\VertexBuffer">
+      <UniqueIdentifier>{058e9e21-91bd-435c-9f36-503d4bbfd903}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\src\VertexBuffer">
+      <UniqueIdentifier>{7160c577-0318-46eb-a28d-ad2f61e86cac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\src\Renderer">
+      <UniqueIdentifier>{ad096da3-439c-414c-a245-acd3aee77fad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\include\Renderer">
+      <UniqueIdentifier>{be642fdc-b7ac-4822-b934-2209fd29bbd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\include\Entity2D">
+      <UniqueIdentifier>{e07f3fcf-234b-4c86-809c-f9e202bf879e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de código fuente\src\Entity2D">
+      <UniqueIdentifier>{a4026524-80a7-4f73-8c16-d071e76b085e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myEngine_API.h">
-      <Filter>Archivos de encabezado\include</Filter>
-    </ClInclude>
-    <ClInclude Include="Renderer.h">
-      <Filter>Archivos de encabezado\include</Filter>
-    </ClInclude>
-    <ClInclude Include="Window.h">
       <Filter>Archivos de encabezado\include</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
@@ -48,63 +60,48 @@
     <ClInclude Include="Game.h">
       <Filter>Archivos de encabezado\include</Filter>
     </ClInclude>
-    <ClInclude Include="VertexBuffer.h">
-      <Filter>Archivos de encabezado\include</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderTypes.h">
-      <Filter>Archivos de encabezado\include</Filter>
-    </ClInclude>
-    <ClInclude Include="Quad.h">
-      <Filter>Archivos de encabezado\include</Filter>
-    </ClInclude>
-    <ClInclude Include="EMath.h">
-      <Filter>Archivos de encabezado\include</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity2D.h">
-      <Filter>Archivos de encabezado\include</Filter>
-    </ClInclude>
-    <ClInclude Include="Sprite.h">
-      <Filter>Archivos de encabezado\include</Filter>
-    </ClInclude>
     <ClInclude Include="input\pg1_directinput.h">
       <Filter>Archivos de encabezado\include\input</Filter>
     </ClInclude>
     <ClInclude Include="input\pg1_input.h">
       <Filter>Archivos de encabezado\include\input</Filter>
     </ClInclude>
-    <ClInclude Include="animation.h">
-      <Filter>Archivos de encabezado\include</Filter>
-    </ClInclude>
     <ClInclude Include="timer\pg1_timer.h">
       <Filter>Archivos de encabezado\include\timer</Filter>
     </ClInclude>
+    <ClInclude Include="VertexBuffer\VertexBuffer.h">
+      <Filter>Archivos de encabezado\include\VertexBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Renderer.h">
+      <Filter>Archivos de encabezado\include\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity2D\Entity2D.h">
+      <Filter>Archivos de encabezado\include\Entity2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity2D\Quad.h">
+      <Filter>Archivos de encabezado\include\Entity2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity2D\Sprite.h">
+      <Filter>Archivos de encabezado\include\Entity2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity2D\animation.h">
+      <Filter>Archivos de encabezado\include\Entity2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\RenderTypes.h">
+      <Filter>Archivos de encabezado\include\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\Window.h">
+      <Filter>Archivos de encabezado\include\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer\EMath.h">
+      <Filter>Archivos de encabezado\include\Renderer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>Archivos de código fuente\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Archivos de código fuente\src</Filter>
-    </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Archivos de código fuente\src</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>Archivos de código fuente\src</Filter>
-    </ClCompile>
-    <ClCompile Include="VertexBuffer.cpp">
-      <Filter>Archivos de código fuente\src</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderTypes.cpp">
-      <Filter>Archivos de código fuente\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Quad.cpp">
-      <Filter>Archivos de código fuente\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity2D.cpp">
-      <Filter>Archivos de código fuente\src</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
       <Filter>Archivos de código fuente\src</Filter>
     </ClCompile>
     <ClCompile Include="input\pg1_directinput.cpp">
@@ -113,11 +110,32 @@
     <ClCompile Include="input\pg1_input.cpp">
       <Filter>Archivos de código fuente\src\input</Filter>
     </ClCompile>
-    <ClCompile Include="animation.cpp">
-      <Filter>Archivos de código fuente\src</Filter>
-    </ClCompile>
     <ClCompile Include="timer\pg1_timer.cpp">
       <Filter>Archivos de código fuente\src\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexBuffer\VertexBuffer.cpp">
+      <Filter>Archivos de código fuente\src\VertexBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\Renderer.cpp">
+      <Filter>Archivos de código fuente\src\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity2D\Entity2D.cpp">
+      <Filter>Archivos de código fuente\src\Entity2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity2D\Quad.cpp">
+      <Filter>Archivos de código fuente\src\Entity2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity2D\Sprite.cpp">
+      <Filter>Archivos de código fuente\src\Entity2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity2D\animation.cpp">
+      <Filter>Archivos de código fuente\src\Entity2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\RenderTypes.cpp">
+      <Filter>Archivos de código fuente\src\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer\Window.cpp">
+      <Filter>Archivos de código fuente\src\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

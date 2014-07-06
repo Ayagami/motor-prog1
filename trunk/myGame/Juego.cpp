@@ -5,6 +5,7 @@ using namespace MiJuego;
 bool Game::Init(DoMaRe::Renderer& r){
 	_Cubo1.setScale(1000.0f,30.0f);
 	_Cubo1.setPos(0,-300);
+
 	/*
 	_Cubo2.setScale(200.0f,200.0f);
 	_Cubo2.setPos(-100.0f,-100.0f);
@@ -73,6 +74,8 @@ bool Game::Init(DoMaRe::Renderer& r){
 	return true;
 }
 void Game::Frame(DoMaRe::Renderer& r, DoMaRe::DirectInput& eInput, DoMaRe::Timer& t){
+	// Cubo Rebote
+
 	static float fSp = 3.0f;
 	static float initGravity = _Sprite2.getGravity();
 	static float jumpSpeed = 7;

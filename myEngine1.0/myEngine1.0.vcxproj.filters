@@ -49,6 +49,12 @@
     <Filter Include="Archivos de código fuente\src\Entity2D">
       <UniqueIdentifier>{a4026524-80a7-4f73-8c16-d071e76b085e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de código fuente\src\Scene">
+      <UniqueIdentifier>{0e152e99-042d-4a09-9ae4-12aafca6d992}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\include\Scene">
+      <UniqueIdentifier>{9ed1b735-bdce-4050-8f39-a722e5d63efb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myEngine_API.h">
@@ -96,6 +102,9 @@
     <ClInclude Include="Renderer\EMath.h">
       <Filter>Archivos de encabezado\include\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="Scene\Scene.h">
+      <Filter>Archivos de encabezado\include\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -136,6 +145,9 @@
     </ClCompile>
     <ClCompile Include="Renderer\Window.cpp">
       <Filter>Archivos de código fuente\src\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\Scene.cpp">
+      <Filter>Archivos de código fuente\src\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

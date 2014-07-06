@@ -11,7 +11,7 @@ namespace DoMaRe{
 		void setPos(float fPosX,float fPosY);
 		void setRotation(float fRotation);
 		void setScale(float fScaleX, float fScaleY);
-
+		virtual void draw(Renderer& r) const = 0;
 		void UseGravity(bool _T);
 		void SetGravity(float _G);
 		float posX() const;

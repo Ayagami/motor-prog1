@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Entity2D.h"
 #include "..\Renderer\Renderer.h"
+#include <string>
 #include <d3dx9.h>
 using namespace DoMaRe;
 Entity2D::Entity2D() :
@@ -94,6 +95,14 @@ float Entity2D::previousPosX() const{
 
 float Entity2D::previousPosY() const{
 	return _PreviousPosY;
+}
+
+void Entity2D::setName(std::string _name){
+	_Name = _name;
+}
+
+std::string Entity2D::getName() const{
+	return _Name;
 }
 
 void Entity2D::returnToPos(float fPosX, float fPosY){

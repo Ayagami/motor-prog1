@@ -1,17 +1,25 @@
 #pragma once
 #include "myEngine_API.h"
+#include <iostream>
+#include <string>
 namespace DoMaRe{
 	class Renderer;
 	class DirectInput;
 	class Timer;
+	class Scene;
 	class MYENGINE_API Game{
 		public:
-			Game() { GameOn = true;}
+			Game();
+			Game(std::string);
 			virtual bool Init(DoMaRe::Renderer&) = 0;
 			virtual void Frame(DoMaRe::Renderer&, DoMaRe::DirectInput&, DoMaRe::Timer&) = 0;
 			virtual void DeInit() = 0;
 			bool GameOn;
 			void setGame(const bool b){ GameOn = b;}
 			bool getGame(){ return GameOn;}
+			Scene currentScene();
+			void setScene(std::string);
+		protected:
+			Scene * _currentScene;
 	};
 }

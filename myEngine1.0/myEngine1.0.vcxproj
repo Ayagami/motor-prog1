@@ -89,8 +89,10 @@
     <ClInclude Include="Renderer\Renderer.h" />
     <ClInclude Include="Renderer\RenderTypes.h" />
     <ClInclude Include="Renderer\Window.h" />
+    <ClInclude Include="Scene\Import.h" />
     <ClInclude Include="Scene\Scene.h" />
     <ClInclude Include="timer\pg1_timer.h" />
+    <ClInclude Include="TinyXML\tinyxml2.h" />
     <ClInclude Include="VertexBuffer\VertexBuffer.h" />
   </ItemGroup>
   <ItemGroup>
@@ -105,8 +107,10 @@
     <ClCompile Include="Renderer\Renderer.cpp" />
     <ClCompile Include="Renderer\RenderTypes.cpp" />
     <ClCompile Include="Renderer\Window.cpp" />
+    <ClCompile Include="Scene\Import.cpp" />
     <ClCompile Include="Scene\Scene.cpp" />
     <ClCompile Include="timer\pg1_timer.cpp" />
+    <ClCompile Include="TinyXML\tinyxml2.cpp" />
     <ClCompile Include="VertexBuffer\VertexBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>

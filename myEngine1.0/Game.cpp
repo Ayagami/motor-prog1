@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Scene\Scene.h"
+#include "Scene\Import.h"
 using namespace DoMaRe;
 Game::Game() : _currentScene(new Scene), GameOn(true){
 }
@@ -14,4 +15,5 @@ Scene Game::currentScene(){
 
 void Game::setScene(std::string name){
 	// Import scene.
+	Import::importScene(*_currentScene,name);
 }

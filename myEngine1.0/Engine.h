@@ -9,7 +9,6 @@ class Game;
 class DirectInput;
 class Timer;
 	class MYENGINE_API Engine{
-
 		public:
 			Engine(HINSTANCE hInst ,int nCmdS, std::string t, int w, int h);
 			~Engine();
@@ -17,16 +16,15 @@ class Timer;
 			void run();
 			HWND hWnd;
 			Game* G;
+			Renderer* Rendr;
 		private:
 			HINSTANCE hInstance;
 			Window* WndC;
-			Renderer* Rendr;
 			DirectInput* dInput;
 			Timer* m_pkTimer;
 			int nCmdShow;
 			std::string _t;
 			int _w;
 			int _h;
-		
 	};
 }

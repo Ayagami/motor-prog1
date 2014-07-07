@@ -1,7 +1,7 @@
 #pragma once
 #include "../myEngine_API.h"
 #include <vector>
-
+#include <string>
 namespace DoMaRe{
 class Timer;
 	class MYENGINE_API Animation{
@@ -26,8 +26,11 @@ class Timer;
 		void setLength(float fLength);
 		void update(Timer& rkTimer);
 		void resetFrames();
+		void setName(std::string _name);
+		std::string getName() const;
 	private:
 		float m_fCurrentTime;
 		float m_fLength;
+		std::string _Name;
 	};
 }

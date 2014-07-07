@@ -27,6 +27,21 @@ bool Scene::deinit(){
 	return true;
 }
 
-bool Scene::getEntity(Entity2D& Entity, std::string){
+bool Scene::addEntity(Entity2D* Entity){
+	m_pkEntidades.push_back(Entity);
 	return true;
+}
+
+bool Scene::getEntity(Entity2D* Entity, std::string Name){
+
+		if(!m_pkEntidades.empty()){
+		std::list<Entity2D*>::iterator it;
+		for(it = m_pkEntidades.begin(); it != m_pkEntidades.end(); it++){
+			if(Name == (*it)->getName())
+				Entity = *it;
+		}
+		return true;
+		}
+
+	return false;
 }

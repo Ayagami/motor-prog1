@@ -41,6 +41,23 @@ void Sprite::setTexture(Texture& _Texture){
 void Sprite::setAnimation(Animation* pkAnimation){
 	m_pkAnimation = pkAnimation;
 }
+
+void Sprite::AddAnimation(Animation* pkAnimation){
+	m_pkAnimationList.push_back(pkAnimation);
+}
+
+void Sprite::setAnimation(std::string pk_Name){
+	if(!m_pkAnimationList.empty()){
+		std::list<Animation*>::iterator it;
+		for(it = m_pkAnimationList.begin(); it != m_pkAnimationList.end(); it++){
+			if((*it)->getName() == pk_Name){
+				m_pkAnimation = *it;
+				return;
+			}
+		}
+	}
+}
+
 void Sprite::update(Timer& rkTimer){
 	if(!m_pkAnimation){
 		return;

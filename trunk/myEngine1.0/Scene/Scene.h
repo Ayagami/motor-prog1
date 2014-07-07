@@ -12,7 +12,8 @@ namespace DoMaRe{
 			bool Init();
 			bool Frame(Renderer&);
 			bool deinit();
-			bool getEntity(Entity2D&, std::string);
+			bool getEntity(Entity2D*, std::string);
+			bool addEntity(Entity2D*);
 		private:
 			std::list<Entity2D*> m_pkEntidades;
 	};

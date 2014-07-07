@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+#include <string>
 #include "../Renderer/EMath.h"
 #include "../Renderer/RenderTypes.h"
 namespace DoMaRe{
@@ -11,6 +13,8 @@ namespace DoMaRe{
 		void setPos(float fPosX,float fPosY);
 		void setRotation(float fRotation);
 		void setScale(float fScaleX, float fScaleY);
+		void setName(std::string _name);
+		std::string getName() const;
 		virtual void draw(Renderer& r) const = 0;
 		void UseGravity(bool _T);
 		void SetGravity(float _G);
@@ -44,6 +48,7 @@ namespace DoMaRe{
 		float _PreviousPosX, _PreviousPosY;
 		float _Gravity;
 		bool _UseGravity;
+		std::string _Name;
 	protected:
 		Matrix _TrMatrix;
 	};

@@ -4,6 +4,7 @@
 #include "../myEngine_API.h"
 namespace DoMaRe{
 	class Renderer;
+	class Timer;
 	//class Entity2D;
 	class MYENGINE_API Quad : public Entity2D{
 	public:	
@@ -12,7 +13,7 @@ namespace DoMaRe{
 	public:
 		void setColor(DWORD c);
 		void setColor(DWORD c, int v);
-
+		void Update(Timer& t) { }
 	public:
 		void draw(Renderer& r) const;
 	private:

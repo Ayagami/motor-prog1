@@ -24,6 +24,8 @@ Sprite::~Sprite(){
 	s_Vertex = NULL;
 }
 
+
+
 void Sprite::setTextCoords( float U1, float V1,
 							float U2, float V2,
 							float U3, float V3,
@@ -40,25 +42,31 @@ void Sprite::setTexture(Texture& _Texture){
 
 void Sprite::setAnimation(Animation* pkAnimation){
 	m_pkAnimation = pkAnimation;
+	m_pkAnimationList.push_back(*pkAnimation);
 }
 
 void Sprite::AddAnimation(Animation* pkAnimation){
-	m_pkAnimationList.push_back(pkAnimation);
+	m_pkAnimationList.push_back(*pkAnimation);
+}
+
+void Sprite::AddAnimation(std::vector<Animation> animation){
+	m_pkAnimationList = animation;
+	if(!m_pkAnimationList.empty())
+		m_pkAnimation = &m_pkAnimationList[0];
 }
 
 void Sprite::setAnimation(std::string pk_Name){
-	if(!m_pkAnimationList.empty()){
-		std::list<Animation*>::iterator it;
-		for(it = m_pkAnimationList.begin(); it != m_pkAnimationList.end(); it++){
-			if((*it)->getName() == pk_Name){
-				m_pkAnimation = *it;
-				return;
-			}
+	if(m_pkAnimationList.empty()) return;
+	std::vector<Animation>::iterator iter;
+	for(iter = m_pkAnimationList.begin(); iter != m_pkAnimationList.end(); iter++){
+		if(iter->getName() == pk_Name){
+			m_pkAnimation = iter._Ptr;
+			return;
 		}
 	}
 }
 
-void Sprite::update(Timer& rkTimer){
+void Sprite::Update(Timer& rkTimer){
 	if(!m_pkAnimation){
 		return;
 	}

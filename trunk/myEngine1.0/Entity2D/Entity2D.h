@@ -5,6 +5,7 @@
 #include "../Renderer/RenderTypes.h"
 namespace DoMaRe{
 	class Renderer;
+	class Timer;
 	class MYENGINE_API Entity2D{
 	public:
 		Entity2D();
@@ -16,6 +17,7 @@ namespace DoMaRe{
 		void setName(std::string _name);
 		std::string getName() const;
 		virtual void draw(Renderer& r) const = 0;
+		virtual void Update(Timer& t) = 0;
 		void UseGravity(bool _T);
 		void SetGravity(float _G);
 		float posX() const;

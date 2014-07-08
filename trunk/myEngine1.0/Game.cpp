@@ -15,5 +15,5 @@ Scene Game::currentScene(){
 
 void Game::setScene(std::string name){
 	// Import scene.
-	Import::importScene(*_currentScene,name);
+	//Import::importScene(*_currentScene,name);
 }

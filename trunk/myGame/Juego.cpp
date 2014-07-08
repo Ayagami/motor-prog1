@@ -2,7 +2,12 @@
 bool d = true;
 using namespace MiJuego;
 
-bool Game::Init(DoMaRe::Renderer& r){
+bool Game::Init(DoMaRe::Renderer& r, DoMaRe::Import& Importer){
+	Escena1 = new Scene1();
+	_currentScene = Escena1;
+	Importer.importScene(*Escena1, "Archivo.xml");
+	/*
+	Importer.importScene
 	_Cubo1.setScale(1000.0f,30.0f);
 	_Cubo1.setPos(0,-300);
 
@@ -21,7 +26,7 @@ bool Game::Init(DoMaRe::Renderer& r){
 
 	DoMaRe::Texture _mTexture = r.loadTexture("assets/Zelda.png", DoMaRe_COLOR_RGB(0,0,0));
 	_Sprite1.setTexture(_mTexture);
-	*/
+	
 	_Sprite2.UseGravity(true);
 	_Sprite2.SetGravity(0.1f);
 	DoMaRe::Texture kCharactersTexture = r.loadTexture("assets/Link.png", DoMaRe_COLOR_RGB(0,255,0));
@@ -70,11 +75,11 @@ bool Game::Init(DoMaRe::Renderer& r){
 	_Sprite2.setAnimation(&m_Sprite2_Idle);
 
 
-	
+	*/
 	return true;
 }
-void Game::Frame(DoMaRe::Renderer& r, DoMaRe::DirectInput& eInput, DoMaRe::Timer& t){
-	// Cubo Rebote
+void Game::Frame(DoMaRe::Renderer& r, DoMaRe::DirectInput& eInput, DoMaRe::Timer& t, DoMaRe::Import& Importer){
+	/*// Cubo Rebote
 
 	static float fSp = 3.0f;
 	static float initGravity = _Sprite2.getGravity();
@@ -87,7 +92,7 @@ void Game::Frame(DoMaRe::Renderer& r, DoMaRe::DirectInput& eInput, DoMaRe::Timer
 		//_Sprite2.setAnimation(&m_Sprite2_Idle);
 
 		_Sprite2.UseGravity(true);
-		_Sprite2.SetGravity( _Sprite2.getGravity()  +  fSp / 10 /*  / t.fps() / 100*/ );				
+		_Sprite2.SetGravity( _Sprite2.getGravity()  +  fSp / 10 /*  / t.fps() / 100*/  /* );				
 		_Sprite2.returnToPos( _Sprite2.previousPosX(), _Sprite2.posY() );
 	}else if(_Sprite2.checkCollision(_Cubo1) == DoMaRe::Entity2D::CollisionVertical){
 		isJumping = false;
@@ -99,7 +104,7 @@ void Game::Frame(DoMaRe::Renderer& r, DoMaRe::DirectInput& eInput, DoMaRe::Timer
 		isJumping = true;
 		//_Sprite2.setAnimation(&m_Sprite2_Jump);
 		_Sprite2.UseGravity(true);
-		_Sprite2.SetGravity( _Sprite2.getGravity()  +  fSp / 10 /*  / t.fps() / 100*/ );
+		_Sprite2.SetGravity( _Sprite2.getGravity()  +  fSp / 10 /*  / t.fps() / 100*/ /*);
 	}
 
 	if(eInput.keyDown(DoMaRe::Input::KEY_LEFT)){
@@ -148,10 +153,10 @@ void Game::Frame(DoMaRe::Renderer& r, DoMaRe::DirectInput& eInput, DoMaRe::Timer
 	
 	_Cubo1.draw(r);
 	_Sprite2.UpdateGravityPos();
-	_Sprite2.update(t);
+	_Sprite2.Update(t);
 	_Sprite2.draw(r);
 	_Sprite2.drawAABB(r);
-	_Cubo1.drawAABB(r);
+	_Cubo1.drawAABB(r);*/
 }
 void Game::DeInit(){
 }

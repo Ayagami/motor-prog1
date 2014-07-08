@@ -11,13 +11,12 @@
 #include "Scene\Scene.h"
 using namespace DoMaRe;
 Engine::Engine(HINSTANCE hInst, int nCmdS, std::string t, int w, int h):
-hInstance(hInst),nCmdShow(nCmdS), _t(t), _w(w), _h(h), hWnd(0), WndC(new Window(hInst) ), Rendr(new Renderer), G(NULL), dInput( new DirectInput() ), m_pkTimer( new Timer() ){
+hInstance(hInst),nCmdShow(nCmdS), _t(t), _w(w), _h(h), hWnd(0), WndC(new Window(hInst) ), Rendr(new Renderer), G(NULL), dInput( new DirectInput() ), m_pkTimer( new Timer() ), Importer (new Import(*Rendr)){
 	// So... Why so Serious?
 }
 bool Engine::init(){
 	if(WndC->CrearVentana(_t,_w,_h) == TRUE && Rendr->Init(WndC->hWnd()) == TRUE && dInput->init(hInstance,WndC->hWnd()) == TRUE){
-		Import* importer = new Import();
-		importer->SetRenderer(Rendr);
+		//importer->SetRenderer(Rendr);
 		//Import::SetRenderer(Rendr);
 		return true;
 	}
@@ -29,7 +28,7 @@ void Engine::run(){
 	MSG Mess;
 
 	if(!G) return;
-	if(!G->Init(*Rendr)) return;
+	if(!G->Init(*Rendr, *Importer)) return;
 	m_pkTimer->firstMeasure();
 
 	while(G->getGame()){
@@ -43,8 +42,8 @@ void Engine::run(){
 
 		dInput->reacquire();
 		Rendr->BeginFrame();
-		G->Frame(*Rendr, *dInput, *m_pkTimer);
-		G->currentScene().Frame(*Rendr);
+		G->Frame(*Rendr, *dInput, *m_pkTimer, *Importer);
+		G->currentScene().Frame(*Rendr, *m_pkTimer);
 		Rendr->EndFrame();
 		if(PeekMessage(&Mess,NULL,0,0,PM_REMOVE)){
 			TranslateMessage(&Mess);

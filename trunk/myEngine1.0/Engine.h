@@ -8,6 +8,7 @@ class Renderer;
 class Game;
 class DirectInput;
 class Timer;
+class Import;
 	class MYENGINE_API Engine{
 		public:
 			Engine(HINSTANCE hInst ,int nCmdS, std::string t, int w, int h);
@@ -16,8 +17,10 @@ class Timer;
 			void run();
 			HWND hWnd;
 			Game* G;
-			Renderer* Rendr;
+			Import* Importer;
 		private:
+			
+			Renderer* Rendr;
 			HINSTANCE hInstance;
 			Window* WndC;
 			DirectInput* dInput;

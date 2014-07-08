@@ -3,7 +3,7 @@
 #include "../myEngine_API.h"
 #include "Entity2D.h"
 #include <iostream>
-#include <list>
+#include <vector>
 #include <string>
 namespace DoMaRe{
 class Renderer;
@@ -22,15 +22,20 @@ public:
 	);
 	void setAnimation(Animation* pkAnimation);
 	void setAnimation(std::string);
+
+	Animation* getAnimation() { return m_pkAnimation; }
+	Texture* getTexture() { return &s_Texture; }
+
 	void AddAnimation(Animation* pkAnimation);
-	void update(Timer& rkTimer);
+	void AddAnimation(std::vector<Animation>);
+	void Update(Timer& rkTimer);
 	void UpdateGravityPos();
 
 	void draw(Renderer& r) const;
 private:
 	Texture s_Texture;
 	TexCoordVertex* s_Vertex;
-	std::list<Animation*> m_pkAnimationList;
+	std::vector<Animation> m_pkAnimationList;
 	Animation* m_pkAnimation;
 	unsigned int m_uiPreviousFrame;
 	

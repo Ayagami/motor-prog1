@@ -7,15 +7,16 @@
 #include "../Renderer/Renderer.h"
 using namespace DoMaRe;
 
+Import::Import(Renderer& pkRenderer){
+	*_renderer = pkRenderer;
+}
 bool Import::importScene(Scene &scene, std::string fileName)
 {
 	tinyxml2::XMLDocument xmlDoc;
 	xmlDoc.LoadFile("archivo.xml");
 	if(xmlDoc.Error())
 		return false;
-
 	tinyxml2::XMLElement *root = xmlDoc.FirstChildElement("SCENE");
-	
 	importSprite(scene,root);
 	importQuad(scene,root);
 }
@@ -33,17 +34,18 @@ void Import::importSprite(Scene &scene,tinyxml2::XMLElement* root)
 		int g = sprite->IntAttribute("g");
 		int b = sprite->IntAttribute("b");
 
-		//DoMaRe::Texture texture =  // rendererloadTexture(texturePath,DoMaRe_COLOR_RGB(r,g,b));
+		DoMaRe::Texture texture = _renderer->loadTexture(texturePath,DoMaRe_COLOR_RGB(r,g,b));
 
 		//CREAR LISTA ANIM
-		std::list<Animation> list_animations;
+		std::vector<Animation> *list_animations = new std::vector<Animation>();
 
-		importAnimation(list_animations,sprite->FirstChildElement("ANIMATION"));
+		importAnimation(&list_animations,sprite->FirstChildElement("ANIMATION"));
+
 		instance = root->FirstChildElement("INSTANCE");
 		while(instance != NULL)
 		{
 			//CREAR SPRITE 
-			Sprite ent_sprite;
+			Sprite*  ent_sprite = new Sprite();
 
 			if(instance->Attribute("sprite") == nameSprite)
 			{
@@ -55,18 +57,18 @@ void Import::importSprite(Scene &scene,tinyxml2::XMLElement* root)
 				float scaleY = instance->FloatAttribute("scaleY");
 				
 				//GRABAMOS SPRITE			
-				ent_sprite.setPos(posX,posY);
-				ent_sprite.setName(name);
-				ent_sprite.setRotation(rotation);
-				ent_sprite.setScale(scaleX,scaleY);
-				//ent_sprite.setTexture(texture);
+				ent_sprite->setPos(posX,posY);
+				ent_sprite->setName(name);
+				ent_sprite->setRotation(rotation);
+				ent_sprite->setScale(scaleX,scaleY);
+				ent_sprite->setTexture(texture);
 
 			}
 			//CARGO ANIMACIONES
-		//	ent_sprite.AddAnimation(list_animations);
+			ent_sprite->AddAnimation(*list_animations);
 
 			//PUSH_BACK A LISTA ENTITY2D
-			scene.addEntity(&ent_sprite);
+			scene.addEntity(ent_sprite);
 
 			instance = instance->NextSiblingElement("INSTANCE");
 		}
@@ -82,7 +84,7 @@ void Import::importQuad(Scene &scene,tinyxml2::XMLElement* root)
 	while(quad != NULL)
 	{
 		//CREO QUAD
-		Quad ent_quad;
+		Quad  * ent_quad = new Quad();
 
 		std::string name = quad->Attribute("name");
 		float posX = quad->FloatAttribute("posX");
@@ -94,34 +96,34 @@ void Import::importQuad(Scene &scene,tinyxml2::XMLElement* root)
 		int g = quad->IntAttribute("g");
 		int b = quad->IntAttribute("b");
 
-		ent_quad.setName(name);
-		ent_quad.setPos(posX,posY);
-		ent_quad.setRotation(rotation);
-		ent_quad.setScale(scaleX,scaleY);
-		ent_quad.setColor(DoMaRe_COLOR_RGB(r,g,b));
+		ent_quad->setName(name);
+		ent_quad->setPos(posX,posY);
+		ent_quad->setRotation(rotation);
+		ent_quad->setScale(scaleX,scaleY);
+		ent_quad->setColor(DoMaRe_COLOR_RGB(r,g,b));
 
 		//PUSH_BACK A LISTA ENTITY2D
-		//scene.AddEntity(&ent_quad);
+		scene.addEntity(ent_quad);
 
 		quad = quad->NextSiblingElement("QUAD");
 	}
 
 }
 
-void Import::importAnimation(std::list<Animation> &list_animations,tinyxml2::XMLElement* animations)
+void Import::importAnimation(std::vector<Animation> ** list_animations,tinyxml2::XMLElement* animations)
 {
 	while(animations != NULL)
 	{
 		//CREATE ANIMATION AUX
-		Animation anim;
+		Animation *anim = new Animation();
 
 		std::string name = animations->Attribute("name");
 		float lenght = animations->FloatAttribute("lenght");
 		float t_width = animations->FloatAttribute("width");
 		float t_height = animations->FloatAttribute("height");
 
-		anim.setName(name);
-		anim.setLength(lenght);
+		anim->setName(name);
+		anim->setLength(lenght);
 
 		tinyxml2::XMLElement *frame = animations->FirstChildElement("FRAME");
 		while(frame != NULL)
@@ -133,12 +135,12 @@ void Import::importAnimation(std::list<Animation> &list_animations,tinyxml2::XML
 			float height = frame->FloatAttribute("height");
 
 			//ADDFRAME (t_width, t_height, posX, posY, width, height);
-			anim.addFrame(t_width, t_height, posX, posY, width, height);
+			anim->addFrame(t_width, t_height, posX, posY, width, height);
 
 			frame = frame->NextSiblingElement("FRAME");
 		}
 		// PUSH_BACK ANIMATION
-		list_animations.push_back(anim);
+		(*list_animations)->push_back(*anim);
 
 		animations = animations->NextSiblingElement("ANIMATION");
 	}

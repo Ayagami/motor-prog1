@@ -1,5 +1,5 @@
 #pragma once
-#include "Game.h"
+#include "Scene\Scene.h"
 #include "Entity2D\Quad.h"
 #include "Entity2D\Sprite.h"
 #include "Renderer\RenderTypes.h"
@@ -8,14 +8,16 @@
 #include "timer\pg1_timer.h"
 #include "input\pg1_directinput.h"
 #include "Scene\Import.h"
-#include "Scene1.h"
 namespace MiJuego{
-	class Game : public DoMaRe::Game{
+	class Scene1 : public DoMaRe::Scene{
 	public:
 		bool Init(DoMaRe::Renderer&, DoMaRe::Import&);
 		void Frame(DoMaRe::Renderer&, DoMaRe::DirectInput&, DoMaRe::Timer&, DoMaRe::Import&);
 		void DeInit();
 	private:
-		Scene1* Escena1;
+
+		DoMaRe::Quad _Cubo1;
+
+		DoMaRe::Sprite _Sprite2;
 	};
 }

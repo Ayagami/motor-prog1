@@ -24,6 +24,7 @@ Entity2D::~Entity2D(){
 	_TrMatrix = NULL;
 }
 
+
 void Entity2D::setPos(float fPosX, float fPosY){
 	_PreviousPosX = _PosX;
 	_PreviousPosY = _PosY;

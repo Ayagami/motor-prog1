@@ -5,6 +5,8 @@
 #include <string>
 #include "../TinyXML/tinyxml2.h"
 #include <list>
+#include <vector>
+
 namespace DoMaRe
 {
 	
@@ -17,16 +19,15 @@ namespace DoMaRe
 	class MYENGINE_API Import
 	{
 		public:
-			static bool importScene(Scene&, std::string);
-			static void importSprite(Scene&,tinyxml2::XMLElement*);
-			static void importQuad(Scene&,tinyxml2::XMLElement*);
-			static void importAnimation(std::list<Animation> &animations,tinyxml2::XMLElement*);
-			//Renderer *renderer;
+			Import(Renderer& pkrenderer);
+			bool importScene(Scene&, std::string);
+			void importSprite(Scene&,tinyxml2::XMLElement*);
+			void importQuad(Scene&,tinyxml2::XMLElement*);
+			void importAnimation(std::vector<Animation> **animations,tinyxml2::XMLElement*);
 			
-		public:
-			void SetRenderer(Renderer * r ) { renderer = r;}
+			//Renderer *renderer;
 		private:
-			Renderer * renderer;
+			Renderer* _renderer;
 	};
 }
 

@@ -9,6 +9,7 @@
 #include "input\pg1_directinput.h"
 #include "Scene\Import.h"
 #include "Scene1.h"
+#include "Scene2.h"
 namespace MiJuego{
 	class Game : public DoMaRe::Game{
 	public:
@@ -17,5 +18,6 @@ namespace MiJuego{
 		void DeInit();
 	private:
 		Scene1* Escena1;
+		Scene2* Escena2;
 	};
 }

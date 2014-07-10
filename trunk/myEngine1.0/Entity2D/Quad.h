@@ -1,3 +1,4 @@
+#pragma once
 #include "../Renderer/EMath.h"
 #include "../Renderer/RenderTypes.h"
 #include "Entity2D.h"

@@ -2,6 +2,7 @@
 #include "myEngine_API.h"
 #include <iostream>
 #include <string>
+#include <vector>
 namespace DoMaRe{
 	class Renderer;
 	class DirectInput;
@@ -18,9 +19,11 @@ namespace DoMaRe{
 			bool GameOn;
 			void setGame(const bool b){ GameOn = b;}
 			bool getGame(){ return GameOn;}
-			Scene currentScene();
-			void setScene(std::string);
+			Scene* currentScene();
+			void setScene(std::string,DoMaRe::Import&, std::string fileName);
+			void addScene(Scene* pkScene);
 		protected:
 			Scene * _currentScene;
+			std::vector<Scene*> scenesList;
 	};
 }

@@ -19,7 +19,8 @@ namespace DoMaRe
 	class MYENGINE_API Import
 	{
 		public:
-			Import(Renderer& pkrenderer);
+			Import();
+			bool Init(Renderer* pkRenderer);
 			bool importScene(Scene&, std::string);
 			void importSprite(Scene&,tinyxml2::XMLElement*);
 			void importQuad(Scene&,tinyxml2::XMLElement*);
@@ -27,7 +28,7 @@ namespace DoMaRe
 			
 			//Renderer *renderer;
 		private:
-			Renderer* _renderer;
+			Renderer* pk_renderer;
 	};
 }
 

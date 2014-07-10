@@ -2,21 +2,33 @@
 #include "..\Entity2D\Entity2D.h"
 #include "..\Entity2D\Sprite.h"
 #include "..\Entity2D\Quad.h"
+#include "..\Game.h"
+#include "..\Entity2D\animation.h"
+#include "Import.h"
 #include "..\timer\pg1_timer.h"
 
 
 using namespace DoMaRe;
 
-Scene::Scene()/* : m_pkEntidades(new std::list<Entity2D*>)*/{
 
-}
 
 bool Scene::Init(){
 	return true;
 	// Aca van cosas del importer.
 }
 
-bool Scene::Frame(DoMaRe::Renderer& r, Timer& timer){
+bool Scene::Frame(DoMaRe::Renderer& r, DoMaRe::DirectInput& directInput,Timer& timer, Import& Importer, Game& game){
+	/*if(m_pkEntidades.empty()) return false;
+
+	std::vector<Entity2D*>::iterator iter;
+	for(iter = m_pkEntidades.begin(); iter != m_pkEntidades.end(); iter++){
+		(*iter)->Update(timer);
+		(*iter)->draw(r);
+	}*/
+	return true;
+}
+
+bool Scene::draw(DoMaRe::Renderer& r, DoMaRe::DirectInput& directInput,Timer& timer, Import& Importer){
 	if(m_pkEntidades.empty()) return false;
 
 	std::vector<Entity2D*>::iterator iter;
@@ -24,9 +36,8 @@ bool Scene::Frame(DoMaRe::Renderer& r, Timer& timer){
 		(*iter)->Update(timer);
 		(*iter)->draw(r);
 	}
-
+	return true;
 }
-
 
 bool Scene::deinit(){
 	if(m_pkEntidades.empty()) return true;

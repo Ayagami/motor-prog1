@@ -7,7 +7,6 @@ int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance, LPTSTR lpCmdLine,
 	DoMaRe::Engine myEngine(hInst, nCmdShow, "Damian's Quest: Heroes Reborn", 1280, 800);
 	myEngine.init();
 	myEngine.G = new MiJuego::Game();
-	myEngine.G->setScene("scene.xml");
 
 	myEngine.run();
 

@@ -1,3 +1,4 @@
+#pragma once
 //#include "EMath.h"
 #include "../Renderer/RenderTypes.h"
 #include "../myEngine_API.h"

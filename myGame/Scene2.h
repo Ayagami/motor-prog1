@@ -11,7 +11,7 @@
 #include "Scene\Import.h"
 #include <string>
 namespace MiJuego{
-	class Scene1 : public DoMaRe::Scene{
+	class Scene2 : public DoMaRe::Scene{
 
 	public:
 		bool Init();

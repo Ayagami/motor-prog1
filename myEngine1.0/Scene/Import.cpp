@@ -7,8 +7,12 @@
 #include "../Renderer/Renderer.h"
 using namespace DoMaRe;
 
-Import::Import(Renderer& pkRenderer){
-	*_renderer = pkRenderer;
+Import::Import(){
+	//*pk_renderer = *pkRenderer;
+}
+bool Import::Init(Renderer* pkRenderer){
+	pk_renderer = pkRenderer;
+	return true;
 }
 bool Import::importScene(Scene &scene, std::string fileName)
 {
@@ -19,6 +23,7 @@ bool Import::importScene(Scene &scene, std::string fileName)
 	tinyxml2::XMLElement *root = xmlDoc.FirstChildElement("SCENE");
 	importSprite(scene,root);
 	importQuad(scene,root);
+	return true;
 }
 
 void Import::importSprite(Scene &scene,tinyxml2::XMLElement* root)
@@ -34,7 +39,7 @@ void Import::importSprite(Scene &scene,tinyxml2::XMLElement* root)
 		int g = sprite->IntAttribute("g");
 		int b = sprite->IntAttribute("b");
 
-		DoMaRe::Texture texture = _renderer->loadTexture(texturePath,DoMaRe_COLOR_RGB(r,g,b));
+		DoMaRe::Texture texture = pk_renderer->loadTexture(texturePath,DoMaRe_COLOR_RGB(r,g,b));
 
 		//CREAR LISTA ANIM
 		std::vector<Animation> *list_animations = new std::vector<Animation>();

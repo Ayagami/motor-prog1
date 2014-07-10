@@ -30,7 +30,7 @@ public:
 	void AddAnimation(Animation* pkAnimation);
 	void AddAnimation(std::vector<Animation>);
 	void Update(Timer& rkTimer);
-	void UpdateGravityPos();
+	//void UpdateGravityPos();
 
 	void draw(Renderer& r) const;
 private:

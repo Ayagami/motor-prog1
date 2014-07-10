@@ -84,6 +84,6 @@ bool Scene1::Frame(DoMaRe::Renderer& renderer, DoMaRe::DirectInput& dInput, DoMa
 
 
 
-	_Sprite2->UpdateGravityPos();
+	//_Sprite2->UpdateGravityPos();
 	return true;
 }

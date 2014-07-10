@@ -84,9 +84,9 @@ void Sprite::draw(Renderer& r) const{
 	r.Draw(s_Vertex, DoMaRe::TriangleStrip, 4);
 }
 
-void Sprite::UpdateGravityPos(){
+/*void Sprite::UpdateGravityPos(){
 	if(isUsingGravity()){
 		setPos(posX(), posY() - getGravity());
 		updateLocalTransformation();
 	}
-}
+}*/

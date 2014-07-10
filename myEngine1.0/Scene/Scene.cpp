@@ -34,6 +34,7 @@ bool Scene::draw(DoMaRe::Renderer& r, DoMaRe::DirectInput& directInput,Timer& ti
 	std::vector<Entity2D*>::iterator iter;
 	for(iter = m_pkEntidades.begin(); iter != m_pkEntidades.end(); iter++){
 		(*iter)->Update(timer);
+		(*iter)->UpdateGravityPos();
 		(*iter)->draw(r);
 	}
 	return true;

@@ -40,6 +40,7 @@ namespace DoMaRe{
 		CollisionResult checkCollision(Entity2D& rkEntity2D) const;
 		void drawAABB (Renderer& rkRenderer) const;
 
+		void UpdateGravityPos();
 		void updateLocalTransformation();
 		void returnToPos(float fPosX, float fPosY);
 		const Matrix transformationMatrix();

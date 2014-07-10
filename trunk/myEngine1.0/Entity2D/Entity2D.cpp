@@ -159,3 +159,10 @@ void Entity2D::drawAABB(Renderer& rkRenderer) const{
 	rkRenderer.setMatrix(World, _TrMatrix );
 	rkRenderer.Draw(s_akAABBVertices, DoMaRe::LineStrip, 5);
 }
+
+void Entity2D::UpdateGravityPos(){
+	if(isUsingGravity()){
+		setPos(posX(), posY() - getGravity());
+		updateLocalTransformation();
+	}
+}

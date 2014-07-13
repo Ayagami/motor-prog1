@@ -31,12 +31,17 @@ Renderer::~Renderer(){
 	d3d = NULL;
 	}
 
+	Clear();
+}
+void Renderer::Clear(){
+	
 	for(std::vector<Texture>::iterator it = r_vTextures.begin(); it != r_vTextures.end(); it++){
 		(*it)->Release();
 		(*it) = NULL;
 	}
 
 	r_vTextures.clear();
+
 }
 
 bool Renderer::Init(HWND _HwnD){

@@ -5,7 +5,9 @@ using namespace DoMaRe;
 Animation::Animation() : m_uiCurrentFrame(0), m_fCurrentTime(0), m_fLength(1.0f){
 	// Bleh
 }
-
+Animation::~Animation(){
+	m_akFrames.clear();
+}
 unsigned int Animation::currentFrame() const{
 	return m_uiCurrentFrame;
 }

@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Scene\Scene.h"
 #include "Scene\Import.h"
+#include "Renderer\Renderer.h"
 using namespace DoMaRe;
 Game::Game() : GameOn(true){
 }
@@ -27,6 +28,7 @@ void Game::setScene(std::string name, DoMaRe::Import& importer, std::string file
 		if( (*iter._Ptr)->Name == name){
 			_currentScene->deinit();
 			_currentScene = *iter._Ptr;
+			importer.GetRenderer()->Clear();
 			importer.importScene(*_currentScene, fileName);
 			_currentScene->Init();
 			return;

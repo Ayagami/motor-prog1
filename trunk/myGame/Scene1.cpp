@@ -11,7 +11,6 @@ bool Scene1::Init(){
 bool Scene1::Frame(DoMaRe::Renderer& renderer, DoMaRe::DirectInput& dInput, DoMaRe::Timer& timer, DoMaRe::Import& import, DoMaRe::Game& game){
 	if(dInput.keyDown(DoMaRe::Input::KEY_P)){
 		game.setScene("main2",import,"Archivo.xml");
-		//game.currentScene()->Init();
 		return true;
 	}
 
@@ -81,9 +80,5 @@ bool Scene1::Frame(DoMaRe::Renderer& renderer, DoMaRe::DirectInput& dInput, DoMa
 		_Sprite2->setScale(-60.0f, 160.0f);
 	}
 
-
-
-
-	//_Sprite2->UpdateGravityPos();
 	return true;
 }

@@ -7,8 +7,7 @@
 #include <list>
 #include <vector>
 
-namespace DoMaRe
-{
+namespace DoMaRe{
 	
 	class Scene;
 	class Quad;
@@ -16,8 +15,7 @@ namespace DoMaRe
 	class Animation;
 	class Renderer;
 
-	class MYENGINE_API Import
-	{
+	class MYENGINE_API Import{
 		public:
 			Import();
 			bool Init(Renderer* pkRenderer);
@@ -25,7 +23,7 @@ namespace DoMaRe
 			void importSprite(Scene&,tinyxml2::XMLElement*);
 			void importQuad(Scene&,tinyxml2::XMLElement*);
 			void importAnimation(std::vector<Animation> **animations,tinyxml2::XMLElement*);
-			
+			Renderer* GetRenderer() const{ return pk_renderer; }
 			//Renderer *renderer;
 		private:
 			Renderer* pk_renderer;

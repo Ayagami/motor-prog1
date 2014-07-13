@@ -18,13 +18,6 @@ bool Scene::Init(){
 }
 
 bool Scene::Frame(DoMaRe::Renderer& r, DoMaRe::DirectInput& directInput,Timer& timer, Import& Importer, Game& game){
-	/*if(m_pkEntidades.empty()) return false;
-
-	std::vector<Entity2D*>::iterator iter;
-	for(iter = m_pkEntidades.begin(); iter != m_pkEntidades.end(); iter++){
-		(*iter)->Update(timer);
-		(*iter)->draw(r);
-	}*/
 	return true;
 }
 

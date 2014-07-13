@@ -22,9 +22,9 @@ Sprite::Sprite() : Entity2D(), s_Texture(NoTexture), s_Vertex( new TexCoordVerte
 Sprite::~Sprite(){
 	delete[] s_Vertex;
 	s_Vertex = NULL;
+
+	m_pkAnimationList.clear();
 }
-
-
 
 void Sprite::setTextCoords( float U1, float V1,
 							float U2, float V2,

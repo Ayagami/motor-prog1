@@ -4,7 +4,8 @@ using namespace DoMaRe;
 Renderer::Renderer():
 d3d(NULL),
 d3d_dev(NULL),
-p_vb(NULL)
+p_vb(NULL),
+p_vbT(NULL)
 {
 	// Again, Nothing to do.
 }

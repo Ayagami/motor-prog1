@@ -1,6 +1,4 @@
-#ifndef IMPORT_H
-#define IMPORT_H
-
+#pragma once
 #include "../myEngine_API.h"
 #include <string>
 #include "../TinyXML/tinyxml2.h"
@@ -30,5 +28,3 @@ namespace DoMaRe{
 	};
 }
 
-
-#endif
